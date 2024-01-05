@@ -23,6 +23,15 @@ Recipe.belongsTo(User, {
     foreignKey: 'creator_id'
 });
 
+Cookbook.hasMany(Recipe, {
+    foreignKey: 'cookbook_id',
+    onDelete: 'CASCADE'
+});
+
+Recipe.belongsToMany(Cookbook, {
+    foreignKey: 'cookbook_id'
+});
+
 module.exports = {
     User,
     Cookbook,
