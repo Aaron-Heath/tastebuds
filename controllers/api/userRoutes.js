@@ -4,12 +4,6 @@ const MailService = require('../../services/MailService');
 
 const mailService = new MailService();
 
-
-router.get('/signup', async (req,res) => {
-    console.log(req.method + " request for " + req.path);
-    res.json({message:"signup request heard"});
-}); 
-
 router.post('/signup', async (req,res) => {
     console.log("Post request heard")
     // console.log(req.body);
@@ -54,16 +48,5 @@ router.post('/login', async (req, res) => {
 
     // Else respond with bad request (or other appropriate status code)
 });
-
-router.get('/login', async (req,res) => {
-    // TODO: Implement GET login logic - Serve login page.
-
-    // If already logged in
-
-    // Redirect to application main page
-
-    // else serve login page
-
-})
 
 module.exports = router;
