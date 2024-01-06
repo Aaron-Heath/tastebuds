@@ -46,7 +46,24 @@ router.post('/signup', async (req,res) => {
 });
 
 router.post('/login', async (req, res) => {
-    
+    // TODO: Implement POST login logic
+
+    // Validate password against stored user
+
+    // If valid password, provide session
+
+    // Else respond with bad request (or other appropriate status code)
+});
+
+router.get('/login', async (req,res) => {
+    // TODO: Implement GET login logic - Serve login page.
+
+    // If already logged in
+
+    // Redirect to application main page
+
+    // else serve login page
+
 })
 
 module.exports = router;

@@ -1,5 +1,9 @@
 const nodemailer = require('nodemailer');
 
+
+/**
+ * Handles email related functions for the application. 
+ */
 class MailService {
     #transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -15,7 +19,7 @@ class MailService {
 
     /**
      * Sends a verification email to the newly registered user. Provides a link that will verify and activate their account.
-     * @param { User } user is the user object to be sent the email. 
+     * @param {User} user  is the user object to be sent the email. 
      */
     async sendVerificationEmail(user) {
         let mailOptions = {
@@ -31,7 +35,7 @@ class MailService {
             } else {
                 console.log("Email sent to " + user.email + " successfully.");
             }
-        })
+        });
     }
 
 }
