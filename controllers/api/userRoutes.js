@@ -1,6 +1,23 @@
 const router = require('express').Router();
 const { User , Cookbook } = require('../../models');
 const MailService = require('../../services/MailService');
+const session = require('express-session');
+
+// express-session middleware
+app.use(session({
+    secret: '',
+    resave: false, 
+    saveUninitialized: true
+}));
+
+app.use('/controllers', require('./controllers/homeRoutes')); // ROUTES
+
+// Your server setup
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 
 const mailService = new MailService();
 
@@ -40,13 +57,45 @@ router.post('/signup', async (req,res) => {
 });
 
 router.post('/login', async (req, res) => {
-    // TODO: Implement POST login logic
+    try {
+        const { email, password } = req.body;
 
-    // Validate password against stored user
+        // Find the user by their email
+        const user = await User.findOne({
+            where: {
+                email: email
+            }
+        });
 
-    // If valid password, provide session
+        if (!user) {
+            return res.status(400).json({ error: 'Invalid email or password' });
+        }
 
-    // Else respond with bad request (or other appropriate status code)
+        // Compares the entered password with the stored hash
+        const passwordMatch = await bcrypt.compare(password, user.password);
+
+        if (!passwordMatch) {
+            return res.status(400).json({ error: 'Invalid email or password' });
+        }
+
+        // sessions middleware 
+        req.session.userId = user.id;
+        req.session.username = user.username;
+
+        // Sends success message and user information
+        res.json({
+            message: 'Login successful',
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+            }
+        });
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
+
 
 module.exports = router;
