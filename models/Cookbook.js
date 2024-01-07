@@ -16,7 +16,7 @@ Cookbook.init(
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'user_id'
+                key: 'id'
             }
         },
         title: {
@@ -33,14 +33,14 @@ Cookbook.init(
             allowNull: false
         },
         viewers: {
-            type: DataTypes.ARRAY
+            type: DataTypes.JSON
         },
         editors: {
-            type: DataTypes.ARRAY
+            type: DataTypes.JSON
         },
-        recipes: {
-            type: DataTypes.ARRAY
-        }
+        // recipes: {
+        //     type: DataTypes.JSON
+        // }
     },
     {
         sequelize,
