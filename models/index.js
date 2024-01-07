@@ -2,6 +2,7 @@
 const User = require('./User');
 const Cookbook = require('./Cookbook');
 const Recipe = require('./Recipe');
+const CookbookRecipe = require('./CookbookRecipe')
 
 // Users have many cookbooks
 User.hasMany(Cookbook, {
@@ -23,23 +24,20 @@ Recipe.belongsTo(User, {
     foreignKey: 'creator_id'
 });
 
-// Cookbook.hasMany(Recipe, {
-//     foreignKey: 'cookbook_id',
-//     onDelete: 'CASCADE'
-// });
-
 Cookbook.belongsToMany(Recipe, {
-    through: 'cookbook_recipe'
+    through: CookbookRecipe,
+    foreignKey: 'cookbook_id'
 });
 
 Recipe.belongsToMany(Cookbook, {
-    // foreignKey: 'cookbook_id',
-    through: 'cookbook_recipe'
+    through: CookbookRecipe,
+    foreignKey: 'recipe_id'
 });
 
 module.exports = {
     User,
     Cookbook,
-    Recipe
+    Recipe,
+    CookbookRecipe
 }
 
