@@ -9,7 +9,10 @@ async function submitForm(event) {
     try {
         const response = await fetch('/api/user/signup', {
             method: 'POST',
-            body: formData
+            body: formData,
+            header: {
+                'Content-Type': 'multipart/form-data'
+            }
         });
 
         if (!response.ok) {
