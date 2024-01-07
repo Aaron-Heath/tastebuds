@@ -1,5 +1,4 @@
-
-const form = document.getElementById('signupForm');
+const form = document.querySelector('.form');
 
 async function submitForm(event) {
     event.preventDefault(); // Prevents the default form submission
@@ -14,11 +13,11 @@ async function submitForm(event) {
         });
 
         if (!response.ok) {
-            throw new Error(`Error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
-        // Handle the response data
+        // Handles the response data
         console.log(data);
     } catch (error) {
         console.error('Error:', error);
