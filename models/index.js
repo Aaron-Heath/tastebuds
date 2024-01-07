@@ -24,11 +24,13 @@ Recipe.belongsTo(User, {
     foreignKey: 'creator_id'
 });
 
+// Cookbook belongsToMany Recipes (through CookbookRecipe)
 Cookbook.belongsToMany(Recipe, {
     through: CookbookRecipe,
     foreignKey: 'cookbook_id'
 });
 
+// Recipe belongsToMany Cookbooks (through CookbookRecipe)
 Recipe.belongsToMany(Cookbook, {
     through: CookbookRecipe,
     foreignKey: 'recipe_id'
