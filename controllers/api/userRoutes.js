@@ -1,66 +1,47 @@
-const router = require('express').Router();
-const { User , Cookbook } = require('../../models');
-const MailService = require('../../services/MailService');
-const session = require('express-session');
-
-// express-session middleware
-app.use(session({
-    secret: '',
-    resave: false, 
-    saveUninitialized: true
-}));
-
-app.use('/controllers', require('./controllers/homeRoutes')); // ROUTES
-
-// Your server setup
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+const router = require("express").Router();
+const { User, Cookbook } = require("../../models");
+const MailService = require("../../services/MailService");
 
 
 const mailService = new MailService();
 
-router.post('/signup', async (req,res) => {
-    console.log("Post request heard")
-    // console.log(req.body);
-    try {
-        // Create user in db
-        console.log("Creating user");
-        const userData = await User.create(req.body);
+router.post("/signup", async (req, res) => {
+  console.log("Post request heard");
+  // console.log(req.body);
+  try {
+    // Create user in db
+    console.log("Creating user");
+    const userData = await User.create(req.body);
 
-        // Create default private cookbook
-        console.log("Creating cookbook");
-        const cookBookData = await Cookbook.create(
-            {
-                creator_id: userData.id,
-                title: "My Cookbook",
-                isPublic: false,
-                description: "This is my default cookbook!",
-                viewers: null,
-                editors: null,
-                recipes: null,
-            }
-        );
-        
-        // Send verification email to user
-        await mailService.sendVerificationEmail(userData);
-        
-        // TODO - Redirect to login
-        res.json({
-            message: "Success!"
-        });
+    // Create default private cookbook
+    console.log("Creating cookbook");
+    const cookBookData = await Cookbook.create({
+      creator_id: userData.id,
+      title: "My Cookbook",
+      isPublic: false,
+      description: "This is my default cookbook!",
+      viewers: null,
+      editors: null,
+      recipes: null,
+    });
 
-    } catch (err) {
-        res.status(400).json(err);
-    }
+    // Send verification email to user
+    await mailService.sendVerificationEmail(userData);
+
+    // TODO - Redirect to login
+    res.json({
+      message: "Success!",
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.post('/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Find the user by their email
+        // Finds the user by their email
         const user = await User.findOne({
             where: {
                 email: email
@@ -71,31 +52,46 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ error: 'Invalid email or password' });
         }
 
-        // Compares the entered password with the stored hash
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        // Validates password against stored user
+        const isPasswordValid = await validatePassword(password, user.password);
 
-        if (!passwordMatch) {
+        if (!isPasswordValid) {
             return res.status(400).json({ error: 'Invalid email or password' });
         }
 
-        // sessions middleware 
-        req.session.userId = user.id;
-        req.session.username = user.username;
+        // Created and store a session (e.g., using a session middleware)
+        req.session.user = {
+            id: user.id,
+            username: user.username,
+            email: user.email,
+        };
 
-        // Sends success message and user information
+        // Send JSON response with success message and user information
         res.json({
             message: 'Login successful',
-            user: {
-                id: user.id,
-                username: user.username,
-                email: user.email,
-            }
+            user: req.session.user,
         });
 
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+// function to validate the password against stored user data
+const bcrypt = require('bcrypt');
+
+async function validatePassword(enteredPassword, storedPasswordHash) {
+    try {
+        // Using bcrypt.compare for asynchronous password comparison
+        const passwordMatch = await bcrypt.compare(enteredPassword, storedPasswordHash);
+
+        return passwordMatch;
+    } catch (error) {
+        // Handle any errors during password comparisons
+        console.error('Error comparing passwords:', error);
+        return false;
+    }
+}
 
 
 module.exports = router;
