@@ -16,17 +16,17 @@ Recipe.init(
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'user_id'
-            }
-        },
-        cookbook_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'cookbook',
                 key: 'id'
             }
         },
+        // cookbook_id: {
+        //     type: DataTypes.INTEGER,
+        //     allowNull: false,
+        //     references: {
+        //         model: 'cookbook',
+        //         key: 'id'
+        //     }
+        // },
         ingredients: {
             type: DataTypes.JSON,
             allowNull: false
