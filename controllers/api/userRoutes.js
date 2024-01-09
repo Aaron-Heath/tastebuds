@@ -6,6 +6,21 @@ const { uuid } = require('uuidv4');
 
 const mailService = new MailService();
 
+router.get('/activate', async (req,res) => {
+
+  // Update user with query param passed
+  try {
+    await User.update(
+    {validated: true},
+    {where: {uuid:req.query.user}}
+  );
+  res.redirect('/login');
+
+} catch (err) {
+  res.status(404);
+}
+});
+
 router.post("/signup", async (req, res) => {
   console.log("Post request heard");
   // console.log(req.body);

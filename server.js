@@ -40,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequelize.sync({force: process.env.SQL_FORCE}).then(() => {
+sequelize.sync({force: JSON.parse(process.env.SQL_FORCE)}).then(() => {
     app.listen(PORT, ()=> console.log('Now listening at port ' + PORT));
+    console.log(JSON.parse(process.env.PROD_ENV));
 })
