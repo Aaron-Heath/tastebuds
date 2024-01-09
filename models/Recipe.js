@@ -5,7 +5,7 @@ class Recipe extends Model {}
 
 Recipe.init(
     {
-        recipe_id: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
