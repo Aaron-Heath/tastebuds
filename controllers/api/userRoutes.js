@@ -1,9 +1,25 @@
 const router = require("express").Router();
 const { User, Cookbook } = require("../../models");
 const MailService = require("../../services/MailService");
+const { uuid } = require('uuidv4');
 
 
 const mailService = new MailService();
+
+router.get('/activate', async (req,res) => {
+
+  // Update user with query param passed
+  try {
+    await User.update(
+    {validated: true},
+    {where: {uuid:req.query.user}}
+  );
+  res.redirect('/login');
+
+} catch (err) {
+  res.status(404);
+}
+});
 
 router.post("/signup", async (req, res) => {
   console.log("Post request heard");
@@ -11,7 +27,16 @@ router.post("/signup", async (req, res) => {
   try {
     // Create user in db
     console.log("Creating user");
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      uuid: uuid(),
+    }
+      
+    );
 
     // Create default private cookbook
     console.log("Creating cookbook");
