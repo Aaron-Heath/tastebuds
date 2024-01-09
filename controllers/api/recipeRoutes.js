@@ -6,6 +6,7 @@ const { Recipe, Cookbook, CookbookRecipe } = require('../../models');
 // For creating new recipes
 router.post('/', async (req, res) => {
     try {
+        // Creates new recipe
         const newRecipe = await Recipe.create(
             {
                 title: req.body.title,
@@ -13,6 +14,18 @@ router.post('/', async (req, res) => {
                 directions: req.body.directions,
             },
         );
+
+        // Creates new CookbookRecipe model to link recipe with a cookbook
+        const cookbookRecipe = await CookbookRecipe.create(
+            {
+                // The new Recipe id
+                recipe_id: newRecipe.id,
+
+                // Id of selected cookbook pulled from dropdown menu
+                // Must be passed from front-end as 'cookbookId' in body request
+                cookbook_id: req.body.cookbookId
+            }
+        )
 
         console.log('New Recipe Created')
         res.json(newRecipe);
