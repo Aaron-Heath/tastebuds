@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Recipe, Cookbook, CookbookRecipe } = require('../../models');
+const { Recipe, CookbookRecipe } = require('../../models');
 
 //The /api/recipe endpoint
 
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
         );
 
         // Creates new CookbookRecipe model to link recipe with a cookbook
-        const cookbookRecipe = await CookbookRecipe.create(
+        await CookbookRecipe.create(
             {
                 // The new Recipe id
                 recipe_id: newRecipe.id,
@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 
 // For updating recipes
-// URL requires a valid id
+// URL requires a valid recipe id
 router.put('/:recipe_id', async (req, res) => {
     try {
         const updateRecipe = await Recipe.update(
