@@ -53,18 +53,22 @@ router.post('/login', async (req, res) => {
         }
 
         // Validates password against stored user
-        const isPasswordValid = await validatePassword(password, user.password);
+        const isPasswordValid = await user.checkPassword(password);
 
         if (!isPasswordValid) {
             return res.status(400).json({ error: 'Invalid email or password' });
         }
 
         // Created and store a session (e.g., using a session middleware)
-        req.session.user = {
-            id: user.id,
-            username: user.username,
-            email: user.email,
-        };
+        req.session.save(() => {
+            req.session.user = {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+            };
+            req.session.loggedIn = true;
+        });
+
 
         // Send JSON response with success message and user information
         res.json({
@@ -76,22 +80,5 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err);
     }
 });
-
-// function to validate the password against stored user data
-const bcrypt = require('bcrypt');
-
-async function validatePassword(enteredPassword, storedPasswordHash) {
-    try {
-        // Using bcrypt.compare for asynchronous password comparison
-        const passwordMatch = await bcrypt.compare(enteredPassword, storedPasswordHash);
-
-        return passwordMatch;
-    } catch (error) {
-        // Handle any errors during password comparisons
-        console.error('Error comparing passwords:', error);
-        return false;
-    }
-}
-
 
 module.exports = router;
