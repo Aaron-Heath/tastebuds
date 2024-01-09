@@ -1,7 +1,9 @@
 const { User } = require('../models');
+const { uuid } = require('uuidv4');
 
 const userData = [
     {
+        uuid: uuid(),
         firstName: 'Master',
         lastName: 'Splinter',
         username: 'TurtleTeacher',
@@ -9,6 +11,7 @@ const userData = [
         password: 'turtleturtle'
     },
     {
+        uuid: uuid(),
         firstName: 'Leonardo',
         lastName: 'Turtle',
         username: 'BlueTurtle',
@@ -16,6 +19,7 @@ const userData = [
         password: 'turtleturtle'
     },
     {
+        uuid: uuid(),
         firstName: 'Raphael',
         lastName: 'Turtle',
         username: 'RedTurtle',
@@ -23,6 +27,7 @@ const userData = [
         password: 'turtleturtle'
     },
     {
+        uuid: uuid(),
         firstName: 'Donatello',
         lastName: 'Turtle',
         username: 'PurpleTurtle',
@@ -30,6 +35,7 @@ const userData = [
         password: 'turtleturtle'
     },
     {
+        uuid: uuid(),
         firstName: 'Michelangelo',
         lastName: 'Turtle',
         username: 'OrangeTurtle',

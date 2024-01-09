@@ -1,0 +1,40 @@
+:root {
+    --drkgrn: #071E22;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #EE2E31;
+    --linen: #EFE6DD;
+}
+
+form {
+    min-height: 50vh;
+    min-width: 80%;
+
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 25%;
+
+    background-color: white;
+}
+
+.form-control {
+    border-radius: 25px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-subtitle {
+    /* font-weight: bold; */
+}
+
+h1 {
+    text-align: left;
+}
