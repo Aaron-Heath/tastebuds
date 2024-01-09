@@ -1,30 +1,30 @@
-<div class="row">
+<div class="row d-flex justify-content-center">
+    <link rel="stylesheet" href="/css/signup-login.css">
     {{!-- Sign Up --}}
-<body>
-    <h1>Create a New Account</h1>
-    <form class="form">
-        <label for="firstName">First Name:</label><br>
-        <input type="text" id="fname" name="fname" required><br>
-        <br>
-
-        <label for="lastName">Last Name:</label><br>
-        <input type="text" id="lname" name="lname" required><br>
-        <br>
-
-        <label for="email">Email Address:</label><br>
-        <input type="text" id="email" name="email" required><br>
-        <br>
-
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <br>
-
-        <label for="password">Password:</label><br>
-        <input type="password" id="pwd" name="pwd" required><br>
-        <br>
-
-        <input type="submit" value="Sign Up">
-    </form>
-</body>
+    <div class="form-container col-md-4">
+        <form class="form">
+            <h1>Create a New Account</h1>
+            <div class="row">
+                <div class="mb-3 col-6">
+                    <input class="form-control" type="text" id="fname" name="fname" required placeholder="First Name">
+                </div>
+                <div class="mb-3 col-6">
+                    <input class="form-control" type="text" id="lname" name="lname" required placeholder="Last Name">
+                </div>
+            </div>
+        <div class="mb-3">
+            <input class="form-control" type="text" id="email" name="email" required placeholder="Email">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="text" id="username" name="username" required placeholder="Username">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" type="password" id="pwd" name="pwd" required placeholder="Password">
+        </div>
+        <div class="mb-3 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+        </form>
+    </div>
 </div>
 <script src="./js/signup.js"></script>
