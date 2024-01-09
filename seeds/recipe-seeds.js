@@ -3,6 +3,7 @@ const { Recipe } = require('../models');
 const recipeData = [
     {
         creator_id: 2,
+        title: 'Cheese Pizza',
         ingredients: { '1': 'Frozen pizza'},
         directions: { 
             'Step One': 'Preheat oven to 500 degrees.',
@@ -12,6 +13,7 @@ const recipeData = [
     },
     {
         creator_id: 1,
+        title: 'Garfield Lasagna',
         ingredients: { 
             '1': '2 pounds of lasagna noodles',
             '2': 'A quart of tomato sauce',

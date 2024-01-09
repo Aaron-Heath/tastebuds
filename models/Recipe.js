@@ -19,6 +19,10 @@ Recipe.init(
                 key: 'id'
             }
         },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         // cookbook_id: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false,
