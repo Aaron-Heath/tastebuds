@@ -5,7 +5,7 @@ class Recipe extends Model {}
 
 Recipe.init(
     {
-        recipe_id: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
@@ -18,6 +18,10 @@ Recipe.init(
                 model: 'user',
                 key: 'id'
             }
+        },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
         // cookbook_id: {
         //     type: DataTypes.INTEGER,
