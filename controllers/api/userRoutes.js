@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Cookbook } = require("../../models");
 const MailService = require("../../services/MailService");
+const { uuid } = require('uuidv4');
 
 
 const mailService = new MailService();
@@ -11,7 +12,16 @@ router.post("/signup", async (req, res) => {
   try {
     // Create user in db
     console.log("Creating user");
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      uuid: uuid(),
+    }
+      
+    );
 
     // Create default private cookbook
     console.log("Creating cookbook");
