@@ -12,9 +12,12 @@ router.post('/', async (req,res) => {
             {
                 title: req.body.title,
                 description: req.body.description,
+                isPublic: req.body.isPublic,
                 creator_id: req.session.user
             }
         );
+        res.json(newCookbook);
+
     } catch (err) {
         res.status(500).json(err);
     };
@@ -23,7 +26,7 @@ router.post('/', async (req,res) => {
 // updating cookbook
 router.put('/:cookbook_id', async (req, res) => {
     try {
-        const updateCookbook = await Cookbook.update(
+        const updatedCookbook = await Cookbook.update(
             {
                 title:req.body.title,
                 description:req.body.description,
@@ -31,7 +34,7 @@ router.put('/:cookbook_id', async (req, res) => {
             },
             {
                 where: {
-                    id: req.params.recipe_id,
+                    id: req.params.cookbook_id,
                 },
             },
         );
