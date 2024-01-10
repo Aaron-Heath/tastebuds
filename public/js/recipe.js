@@ -82,7 +82,8 @@ const getData = () => {
         const title = formData.get('title');
         const ingredients = formData.get('ingredients');
         const directions = formData.get('directions');
-        const cookbook_id = formData.get('cookbookId');
+        const cookbookName = formData.get('cookbookId');
+        const cookbook_id = cookbookName.dataset.cookbookId
 
         const fetchBody = {
             creator_id: creator_id,
