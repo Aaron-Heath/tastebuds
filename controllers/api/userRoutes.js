@@ -23,7 +23,6 @@ router.get('/activate', async (req,res) => {
 
 router.post("/signup", async (req, res) => {
   console.log("Post request heard");
-  // console.log(req.body);
   try {
     // Create user in db
     console.log("Creating user");
@@ -53,10 +52,7 @@ router.post("/signup", async (req, res) => {
     // Send verification email to user
     await mailService.sendVerificationEmail(userData);
 
-    // TODO - Redirect to login
-    res.json({
-      message: "Success!",
-    });
+    res.status(200).json({message:"user created!"});
   } catch (err) {
     res.status(400).json(err);
   }
