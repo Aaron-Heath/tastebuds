@@ -20,7 +20,7 @@ async function createRecipe(event) {
     // Post method for creating new recipes
     try {
         // Collects body data
-        await getData();
+        await getData(form);
 
         const response = await fetch('/api/recipe', {
             method: 'POST',
@@ -32,6 +32,7 @@ async function createRecipe(event) {
 
         if (response.ok) {
             const data = await response.json();
+            console.log(data)
             console.log('Successful POST request!');
             return data;
         }
@@ -53,7 +54,7 @@ async function updateRecipe(event) {
 
     try {
         //Collects body data
-        await getData();
+        await getData(form);
 
         const response = await fetch(`/api/recipe/${recipeElId}`, {
             method: 'PUT',
