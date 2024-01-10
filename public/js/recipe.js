@@ -1,13 +1,33 @@
-// Post method for creating new recipes
-// TODO: Create query selector for element to pull input from
-const newRecipe = async () => {
+const form = document.querySelector('.form');
+
+async function submitForm(event) {
+
+    // Prevents default form submission
+    event.preventDefault();
+
+    // Collects form data
+    const formData = new FormData(form);
+
+    const title = formData.get('title');
+    const ingredients = formData.get('ingredients');
+    const directions = formData.get('directions');
+    const cookbook_id = formData.get('cookbookId');
+
+    const fetchBody = {
+        title: title,
+        ingredients: ingredients,
+        directions: directions,
+        cookbook_id: cookbook_id,
+    };
+
+    // Post method for creating new recipes
     try {
         const response = await fetch('/api/recipe', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(),   
+            body: JSON.stringify(fetchBody),
         });
 
         if (response.ok) {
@@ -19,6 +39,8 @@ const newRecipe = async () => {
         console.error(err)
     };
 };
+
+
 
 // Put method for updating recipes
 // TODO: Figure out recipe_id variable
