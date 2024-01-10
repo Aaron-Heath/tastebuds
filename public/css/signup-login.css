@@ -7,7 +7,7 @@
     --linen: #EFE6DD;
 }
 
-form {
+form, #activation-prompt {
     min-height: 50vh;
     min-width: 80%;
 
@@ -35,6 +35,15 @@ form {
     /* font-weight: bold; */
 }
 
+
+
 h1 {
     text-align: left;
+}
+#activation-prompt {
+    /* border: 2px blue solid; */
+}
+
+#activation-prompt h2 {
+    /* text-align: center; */
 }
