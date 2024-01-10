@@ -13,7 +13,8 @@ router.post('/', async (req,res) => {
                 title: req.body.title,
                 description: req.body.description,
                 isPublic: req.body.isPublic,
-                creator_id: req.session.user
+                // creator_id: req.session.user.id
+                creator_id: req.body.creator_id
             }
         );
         res.json(newCookbook);
@@ -30,7 +31,8 @@ router.put('/:cookbook_id', async (req, res) => {
             {
                 title:req.body.title,
                 description:req.body.description,
-                creator_id: req.session.user
+                // creator_id: req.session.user
+                creator_id: req.body.creator_id
             },
             {
                 where: {
