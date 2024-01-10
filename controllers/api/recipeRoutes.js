@@ -9,7 +9,8 @@ router.post('/', async (req, res) => {
         // Creates new recipe
         const newRecipe = await Recipe.create(
             {
-                creator_id: req.session.user.id,
+                // creator_id: req.session.user.id,
+                creator_id: 1,
                 title: req.body.title,
                 ingredients: req.body.ingredients,
                 directions: req.body.directions,

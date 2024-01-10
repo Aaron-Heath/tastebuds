@@ -9,7 +9,8 @@ const form = document.querySelector('.form');
 
 // Retrieves id from username element to be used in recipe routes
 const usernameEl = document.querySelector('.username');
-const creator_id = usernameEl.dataset.userId
+// const creator_id = usernameEl.dataset.userId
+const creator_id = 1;
 
 // For creating new recipes
 async function createRecipe(event) {
