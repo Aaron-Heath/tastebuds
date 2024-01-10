@@ -1,4 +1,15 @@
+// TODO: 
+    // -Make sure there is a username class element present in handlebars with the User id in a dataset called 'data-user-id="{{...}}"
+    // -Make sure there is a recipe class element present in handlebars with the Recipe id in a dataset called 'data-recipe-id="{{...}}"
+    // -Create handlebars page with form
+        // -Dropdown menu for selecting cookbook options
+
+
 const form = document.querySelector('.form');
+
+// Retrieves id from username element to be used in recipe routes
+const usernameEl = document.querySelector('.username');
+const creator_id = usernameEl.dataset.userId
 
 // For creating new recipes
 async function createRecipe(event) {
@@ -24,6 +35,7 @@ async function createRecipe(event) {
             console.log('Successful POST request!');
             return data;
         }
+
     } catch (err) {
         console.error(err)
     };
@@ -43,13 +55,12 @@ async function updateRecipe(event) {
         //Collects body data
         await getData();
 
-
         const response = await fetch(`/api/recipe/${recipeElId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(),
+            body: JSON.stringify(fetchBody),
         });
 
         if (response.ok) {
@@ -57,7 +68,6 @@ async function updateRecipe(event) {
             console.log('Successful PUT request!');
             return data;
         }
-
 
     } catch (err) {
         console.error(err);
@@ -67,8 +77,6 @@ async function updateRecipe(event) {
 // For collecting body data for POST and PUT requests
 const getData = () => {
     try {
-
-
         const formData = new FormData(form);
 
         const title = formData.get('title');
@@ -77,14 +85,15 @@ const getData = () => {
         const cookbook_id = formData.get('cookbookId');
 
         const fetchBody = {
+            creator_id: creator_id,
             title: title,
             ingredients: ingredients,
             directions: directions,
             cookbook_id: cookbook_id,
         };
-
         return fetchBody;
+
     } catch (err) {
         console.error('Invalid form submission:', err);
     };
-}
+};
