@@ -2,7 +2,6 @@ const { Cookbook } = require('../../models');
 
 const router = require('express').Router();
 
-
 // creating cookbooks
 router.post('/', async (req,res) => {
     // creates new cookbook
@@ -46,7 +45,30 @@ router.put('/:cookbook_id', async (req, res) => {
     }catch (err) {
         res.status(500).json(err);
     };
-})
+});
+
+//Delete cookbook
+router.delete('/:cookbook_id', async (req, res) => {
+    try {
+        const deleteCookbook = await Cookbook.destroy(
+            {
+                title:req.body.title,
+                description:req.body.description,
+                creator_id: req.session.user
+            },
+            {
+                where: {
+                    id: req.params.cookbook_id,
+                },
+            },
+        );
+
+        console.log('Cookbook deleted');
+        res.json(deleteCookbook);
+    }catch (err) {
+        res.status(500).json(err);
+    };
+});
 
 
 module.exports = router;
