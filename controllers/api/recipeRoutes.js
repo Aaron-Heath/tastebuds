@@ -58,13 +58,6 @@ router.put('/:recipe_id', async (req, res) => {
     };
 })
 
-// router.delete('/:recipe_id', async (req, res) => {
-//    try {
 
-//     const deleteRecipe = await Recipe.destroy(
-//         {
-
-//     })
-// }})
 
 module.exports = router;

@@ -48,13 +48,5 @@ router.put('/:cookbook_id', async (req, res) => {
     };
 })
 
-// router.delete('/:cookbook_id', async (req, res) => {
-//    try {
-
-//     const deleteCookBook = await Cookbook.destroy(
-//         {
-
-//     })
-// }})
 
 module.exports = router;
