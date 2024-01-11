@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
             cookbook.get({ plain: true })
         );
 
-        res.render('recipe', { cookbooks });
+        res.render('recipeCreate', { cookbooks });
 
     } catch (err) {
         console.error(err);
