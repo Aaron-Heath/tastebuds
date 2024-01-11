@@ -9,6 +9,8 @@
     const usernameEl = document.querySelector('.username');
     const creator_id = parseInt(usernameEl.dataset.userId)
     console.log(creator_id)
+    const recipeId = parseInt(usernameEl.dataset.recipeId)
+    console.log(recipeId)
 
     // For updating recipes
     async function updateRecipe(event) {
@@ -17,14 +19,12 @@
         event.preventDefault();
     
         // Finds recipeId for fetch url by selecting the dataset stored with the recipe title
-        const recipeEl = document.querySelector('#title');
-        const recipeElId = parseInt(recipeEl.dataset.recipedId)
     
         try {
             //Collects body data
-            await getData(form);
+            const fetchBody = await getData(form);
     
-            const response = await fetch(`/api/recipe/${recipeElId}`, {
+            const response = await fetch(`/api/recipe/${recipeId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
