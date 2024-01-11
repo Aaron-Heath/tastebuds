@@ -56,15 +56,29 @@ router.put('/:recipe_id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     };
-})
+});
 
-// router.delete('/:recipe_id', async (req, res) => {
-//    try {
+// Delete the recipe
+router.delete('/:recipe_id', async (req, res) => {
+    try {
+        const deleteRecipe = await Recipe.destroy(
+            {
+                title: req.body.title,
+                ingredients: req.body.ingredients,
+                directions: req.body.directions,
+            },
+            {
+                where: {
+                    id: req.params.recipe_id,
+                },
+            },
+        );
 
-//     const deleteRecipe = await Recipe.destroy(
-//         {
-
-//     })
-// }})
+        console.log('Recipe Deleted');
+        res.json(deleteRecipe);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;
