@@ -27,11 +27,12 @@ body {
 }
 
 .btn {
-    padding: auto;
+    padding: 11px;
     text-align: center;
     margin-top: 0px;
     margin-bottom: 20px;
     background-color: #EE2E31;
+    border-radius: 22px;
 }
 
 .welcome {
