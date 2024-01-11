@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
     }
 });
 
-// The /app/update-recipe/:id route for looking at specific recipes
-router.get('/:id', async (req, res) => {
+// The /app/recipe/update/:id route for looking at specific recipes
+router.get('/update/:id', async (req, res) => {
     try {
         const dbRecipeData = await Recipe.findByPk(req.params.id);
 
