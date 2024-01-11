@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         const newRecipe = await Recipe.create(
             {
                 // creator_id: req.session.user.id,
-                creator_id: 1,
+                creator_id: 2,
                 title: req.body.title,
                 ingredients: req.body.ingredients,
                 directions: req.body.directions,
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
                 // Id of selected cookbook pulled from dropdown menu
                 // Must be passed from front-end as 'cookbookId' in body request
-                cookbook_id: req.body.cookbookId
+                cookbook_id: 2
             }
         )
 
