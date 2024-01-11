@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
 
                 // Id of selected cookbook pulled from dropdown menu
                 // Must be passed from front-end as 'cookbookId' in body request
-                cookbook_id: 2
+                cookbook_id: req.body.cookbook_id
             }
         )
 

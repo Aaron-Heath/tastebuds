@@ -1,11 +1,6 @@
-// TODO: 
-    // -Make sure there is a username class element present in handlebars with the User id in a dataset called 'data-user-id="{{...}}"
-    // -Make sure there is a recipe class element present in handlebars with the Recipe id in a dataset called 'data-recipe-id="{{...}}"
-
-
 const form = document.querySelector('.form');
 
-// Retrieves id from username element to be used in recipe routes
+// Retrieves id from username element to be used in creating new recipe
 const usernameEl = document.querySelector('.username');
 const creator_id = parseInt(usernameEl.dataset.userId)
 console.log(creator_id)
@@ -47,12 +42,14 @@ async function createRecipe(event) {
 const getData = () => {
     try {
         const formData = new FormData(form);
-
+        
         const title = formData.get('title');
         const ingredients = formData.get('ingredients');
         const directions = formData.get('directions');
         const cookbook = formData.get('cookbookId');
+        console.log(cookbook)
         const cookbook_id = parseInt(cookbook.dataset.cookbookId)
+        console.log(cookbook_id)
 
         console.log(title)
         const fetchBody = {

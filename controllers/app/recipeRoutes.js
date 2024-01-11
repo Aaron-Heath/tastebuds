@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Cookbook, Recipe } = require('../models')
+const { Cookbook, Recipe } = require('../../models')
 
-// The /recipe route for getting the form to create a new recipe
+// The /app/recipe route for getting the form to create a new recipe
 router.get('/', async (req, res) => {
     try {
         const dbCookbookData = await Cookbook.findAll();
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
             cookbook.get({ plain: true })
         );
 
-        res.render('recipeCreate', { cookbooks });
+        res.render('app-recipe-create', { cookbooks });
 
     } catch (err) {
         console.error(err);
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// The /recipe/:id route for looking at specific recipes
+// The /app/update-recipe/:id route for looking at specific recipes
 router.get('/:id', async (req, res) => {
     try {
         const dbRecipeData = await Recipe.findByPk(req.params.id);
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
         const recipe = dbRecipeData.get({ plain: true });
         console.log(recipe)
 
-        res.render('recipeUpdate', { recipe });
+        res.render('app-recipe-update', { recipe });
 
     } catch (err) {
         console.error(err);
