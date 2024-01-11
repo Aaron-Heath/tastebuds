@@ -16,9 +16,9 @@
         // Prevents default form submission
         event.preventDefault();
     
-        // Finds recipeId for url
-        const recipeEl = document.querySelector('.recipe');
-        const recipeElId = recipeEl.dataset.recipedId
+        // Finds recipeId for fetch url by selecting the dataset stored with the recipe title
+        const recipeEl = document.querySelector('#title');
+        const recipeElId = parseInt(recipeEl.dataset.recipedId)
     
         try {
             //Collects body data
@@ -43,7 +43,7 @@
         };
     };
     
-    // For collecting body data for POST and PUT requests
+    // For collecting body data for PUT requests
     const getData = () => {
         try {
             const formData = new FormData(form);
@@ -51,16 +51,12 @@
             const title = formData.get('title');
             const ingredients = formData.get('ingredients');
             const directions = formData.get('directions');
-            const cookbook = formData.get('cookbookId');
-            const cookbook_id = parseInt(cookbook.dataset.cookbookId)
     
             console.log(title)
             const fetchBody = {
-                creator_id: creator_id,
                 title: title,
                 ingredients: ingredients,
                 directions: directions,
-                cookbook_id: cookbook_id,
             };
     
             console.log(fetchBody)
@@ -71,4 +67,4 @@
         };
     };
     
-    form.addEventListener('submit', createRecipe);
+    form.addEventListener('submit', updateRecipe);

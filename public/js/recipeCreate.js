@@ -43,7 +43,7 @@ async function createRecipe(event) {
 };
 
 
-// For collecting body data for POST and PUT requests
+// For collecting body data for POST requests
 const getData = () => {
     try {
         const formData = new FormData(form);

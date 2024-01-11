@@ -25,8 +25,9 @@ router.get('/:id', async (req, res) => {
         const dbRecipeData = await Recipe.findByPk(req.params.id);
 
         const recipe = dbRecipeData.get({ plain: true });
+        console.log(recipe)
 
-        res.render('recipe-test', { recipe });
+        res.render('recipeUpdate', { recipe });
 
     } catch (err) {
         console.error(err);
