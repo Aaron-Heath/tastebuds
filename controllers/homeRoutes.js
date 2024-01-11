@@ -10,11 +10,12 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/login', async (req,res) => {
-    // TODO: Implement GET login logic - Serve login page.
 
     // If already logged in
-
     // Redirect to application main page
+    if(req.session.logged_in) {
+        res.redirect('/app');
+    }
 
     // else serve login page
     res.render('login');
