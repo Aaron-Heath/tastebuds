@@ -42,11 +42,11 @@ async function createRecipe(event) {
 const getData = () => {
     try {
         const formData = new FormData(form);
-        
+
         const title = formData.get('title');
         const ingredients = formData.get('ingredients');
         const directions = formData.get('directions');
-        const cookbook = formData.get('cookbookId');
+        const cookbook = document.querySelector('#cookbookId');
         console.log(cookbook)
         const cookbook_id = parseInt(cookbook.dataset.cookbookId)
         console.log(cookbook_id)

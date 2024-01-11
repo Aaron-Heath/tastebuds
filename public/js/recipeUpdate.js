@@ -2,6 +2,7 @@
 const form = document.querySelector('.form');
 
 // Retrieves id from username element to be used in url
+const usernameEl = document.querySelector('.username');
 const recipeId = parseInt(usernameEl.dataset.recipeId)
 console.log(recipeId)
 
