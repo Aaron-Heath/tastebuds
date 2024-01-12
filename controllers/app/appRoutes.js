@@ -1,7 +1,9 @@
 const Cookbook = require('../../models/Cookbook');
+const withAuth = require('../../utils/auth');
 
 const router = require('express').Router();
 
+router.all('*',withAuth);
 router.get('/', async (req,res) => {
     const cookbookData = await Cookbook.findAll({
         where: {
@@ -13,6 +15,8 @@ router.get('/', async (req,res) => {
     res.render('app-home', { cookbooks, logged_in: req.session.logged_in });
 });
 
+
+
 router.get('/cookbook/:cookbook_id', async (req,res) => {
     const cookbookData = await Cookbook.findOne({
         where: {
@@ -20,12 +24,6 @@ router.get('/cookbook/:cookbook_id', async (req,res) => {
         }
     });
 
-    // console.log(cookbookData);
-
-
-    // const cookbook = cookbookData.map((cookbook) => {
-    //     cookbook.get({plain: true});
-    // });
     const cookbook = cookbookData.get({plan: true});
     res.render('app-cookbook', { ...cookbook, logged_in: req.session.logged_in });
 });
@@ -33,5 +31,7 @@ router.get('/cookbook/:cookbook_id', async (req,res) => {
 router.get('/public', async (req,res) => {
     res.render('app-public', {logged_in: req.session.logged_in});
 });
+
+
 
 module.exports = router;
