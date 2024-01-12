@@ -3,7 +3,6 @@ const Cookbook = require('../../models/Cookbook');
 const router = require('express').Router();
 
 router.get('/', async (req,res) => {
-    console.log(req.session.user.id);
     const cookbookData = await Cookbook.findAll({
         where: {
             creator_id: req.session.user.id
@@ -11,7 +10,7 @@ router.get('/', async (req,res) => {
     const cookbooks = cookbookData.map((cookbook) => 
         cookbook.get({plain: true}));
     console.log(cookbooks);
-    res.render('app-home', { cookbooks });
+    res.render('app-home', { cookbooks, logged_in: req.session.logged_in });
 });
 
 router.get('/cookbook/:cookbook_id', async (req,res) => {
@@ -32,7 +31,7 @@ router.get('/cookbook/:cookbook_id', async (req,res) => {
 });
 
 router.get('/public', async (req,res) => {
-    res.render('app-public');
+    res.render('app-public', {logged_in: req.session.logged_in});
 });
 
 module.exports = router;
