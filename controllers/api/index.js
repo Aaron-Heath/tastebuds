@@ -6,6 +6,6 @@ const cookbookRoutes = require ('./cookbookRoutes');
 
 router.use('/user', userRoutes);
 router.use('/recipe', recipeRoutes);
-router.use('/cookbookRoutes', cookbookRoutes);
+router.use('/cookbook', cookbookRoutes);
 
 module.exports = router;
