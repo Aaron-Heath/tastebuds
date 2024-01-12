@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Cookbook, Recipe } = require('../../models')
 
-// The /app/recipe route for getting the form to create a new recipe
+// The /app/recipe endpoint for getting the form to create a new recipe
 router.get('/', async (req, res) => {
     try {
         const dbCookbookData = await Cookbook.findAll();
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// The /app/recipe/update/:id route for looking at specific recipes
+// The /app/recipe/update/:id endpoint for looking at specific recipes
 router.get('/update/:id', async (req, res) => {
     try {
         const dbRecipeData = await Recipe.findByPk(req.params.id);

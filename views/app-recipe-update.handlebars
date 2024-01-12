@@ -7,20 +7,25 @@
             <div class="row">
 
                 <div class="mb-3 col-6">
-                    <input class="form-control" type="text" id="title" name="title" required placeholder="{{recipe.title}}">
+                    <input class="form-control" type="text" id="title" name="title"
+                        placeholder="{{recipe.title}}" value="{{recipe.title}}">
                 </div>
             </div>
 
             <div class="mb-3">
-                <input class="form-control" type="text" id="ingredients" name="ingredients" required
-                    placeholder="Ingredients">
+                {{#each recipe.ingredients}}
+                <input class="form-control ingredients" type="text" name="ingredients"
+                    placeholder="{{this}}" value="{{this}}">
+                {{/each}}
             </div>
 
             <div class="mb-3">
-                <input class="form-control" type="text" id="directions" name="directions" required
-                    placeholder="Directions">
+                {{#each recipe.directions}}
+                <input class="form-control directions" type="text" name="directions"
+                    placeholder="{{this}}" value="{{this}}">
+                {{/each}}
             </div>
-            
+
 
             <div class="mb-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
