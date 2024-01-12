@@ -5,22 +5,24 @@ const Recipe = require('./Recipe');
 const CookbookRecipe = require('./CookbookRecipe')
 const UserCookbook = require('./UserCookbook')
 
-// Users have many cookbooks
+// User belongsToMany Cookbooks (through UserCookbook)
 User.belongsToMany(Cookbook, {
     through: UserCookbook,
     foreignKey: 'user_id',
 });
 
+// Cookbook belongsToMany Users (through UserCookbook)
 Cookbook.belongsToMany(User, {
     through: UserCookbook,
     foreignKey: 'cookbook_id'
 });
 
-//Users have many recipes
+// Users have many recipes
 User.hasMany(Recipe, {
     foreignKey: 'creator_id',
 });
 
+// Recipe belongs to one User
 Recipe.belongsTo(User, {
     foreignKey: 'creator_id'
 });
