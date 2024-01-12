@@ -62,15 +62,10 @@ router.delete('/:recipe_id', async (req, res) => {
     try {
         const deleteRecipe = await Recipe.destroy(
             {
-                title: req.body.title,
-                ingredients: req.body.ingredients,
-                directions: req.body.directions,
-            },
-            {
                 where: {
                     id: req.params.recipe_id,
-                },
-            },
+                }
+            }
         );
 
         console.log('Recipe Deleted');

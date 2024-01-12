@@ -52,17 +52,11 @@ router.delete('/:cookbook_id', async (req, res) => {
     try {
         const deleteCookbook = await Cookbook.destroy(
             {
-                title:req.body.title,
-                description:req.body.description,
-                creator_id: req.session.user
-            },
-            {
                 where: {
                     id: req.params.cookbook_id,
                 },
             },
         );
-
         console.log('Cookbook deleted');
         res.json(deleteCookbook);
     }catch (err) {
