@@ -1,0 +1,44 @@
+<div class="row d-flex justify-content-center">
+    {{!-- Recipe Creation (POST request) --}}
+    <div class="form-container col-md-4">
+        <form class="form">
+
+            <h1 class="username" data-user-id="2">Create a Recipe</h1>
+            <div class="row">
+
+                <div class="mb-3 col-6">
+                    <input class="form-control" type="text" id="title" name="title" required placeholder="Title">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" id="ingredients" name="ingredients" required
+                    placeholder="Ingredients">
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control" type="text" id="directions" name="directions" required
+                    placeholder="Directions">
+            </div>
+
+            <div class="mb-3 btn-group">
+                <button class="form-control btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true"
+                    aria-expanded="false" id="cookbookName" name="cookbookName" required>
+                    Choose a cookbook for your recipe!
+                </button>
+
+                <ul class="dropdown-menu">
+                    {{#each cookbooks as |cookbook|}}
+                    {{> cookbook-list}}
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="../js/recipeCreate.js"></script>

@@ -17,6 +17,9 @@
 body {
     /* background-color: var(--linen); */
 }
+a {
+    text-decoration: none;
+}
 
 
 .border-blue {
