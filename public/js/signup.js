@@ -41,7 +41,6 @@ async function submitForm(event) {
 
         // Handles the response data
 
-        // TODO: prompt user to check their email
         //clear innerHtml on form-container
         formContainer.innerHTML = "";
 
@@ -64,6 +63,8 @@ async function submitForm(event) {
 
         // Render to screen
         formContainer.appendChild(activationPrompt);
+
+        // TODO set interval prompt link to login page. 
 
 
 
