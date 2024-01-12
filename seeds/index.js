@@ -2,7 +2,8 @@
 const seedCookbooks = require('./cookbook-seeds');
 const seedUsers = require('./user-seeds');
 const seedRecipes = require('./recipe-seeds');
-const seedCookbookRecipes = require('./cookbook-recipe-seeds')
+const seedCookbookRecipes = require('./cookbook-recipe-seeds');
+const seedUserCookbooks = require('./user-cookbook-seeds');
 
 const sequelize = require('../config/connection');
 
@@ -21,7 +22,10 @@ const seedAll = async () => {
     console.log('Recipes Seeded');
 
     await seedCookbookRecipes();
-    console.log('Cookbook Recipes Seeded')
+    console.log('Cookbook Recipes Seeded');
+
+    await seedUserCookbooks();
+    console.log('User Cookbooks Seeded');
 
     // Ends process
     process.exit(0);
