@@ -2,15 +2,13 @@ const router = require('express').Router();
 const { Recipe, CookbookRecipe } = require('../../models');
 
 //The /api/recipe endpoint
-
 // For creating new recipes
 router.post('/', async (req, res) => {
     try {
         // Creates new recipe
         const newRecipe = await Recipe.create(
             {
-                // creator_id: req.session.user.id,
-                creator_id: 2,
+                creator_id: req.session.user.id,
                 title: req.body.title,
                 ingredients: req.body.ingredients,
                 directions: req.body.directions,
@@ -24,7 +22,6 @@ router.post('/', async (req, res) => {
                 recipe_id: newRecipe.id,
 
                 // Id of selected cookbook pulled from dropdown menu
-                // Must be passed from front-end as 'cookbookId' in body request
                 cookbook_id: req.body.cookbook_id
             }
         )
@@ -37,7 +34,7 @@ router.post('/', async (req, res) => {
 });
 
 // For updating recipes
-// URL requires a valid recipe id
+// The /api/:recipe_id endpoint
 router.put('/:recipe_id', async (req, res) => {
     try {
         const updateRecipe = await Recipe.update(
@@ -65,15 +62,10 @@ router.delete('/:recipe_id', async (req, res) => {
     try {
         const deleteRecipe = await Recipe.destroy(
             {
-                title: req.body.title,
-                ingredients: req.body.ingredients,
-                directions: req.body.directions,
-            },
-            {
                 where: {
                     id: req.params.recipe_id,
-                },
-            },
+                }
+            }
         );
 
         console.log('Recipe Deleted');
