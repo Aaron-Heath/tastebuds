@@ -14,14 +14,14 @@
 
             <div class="mb-3">
                 {{#each recipe.ingredients}}
-                <input class="form-control" type="text" id="ingredients" name="ingredients"
+                <input class="form-control ingredients" type="text" name="ingredients"
                     placeholder="{{this}}">
                 {{/each}}
             </div>
 
             <div class="mb-3">
                 {{#each recipe.directions}}
-                <input class="form-control" type="text" id="directions" name="directions"
+                <input class="form-control directions" type="text" name="directions"
                     placeholder="{{this}}">
                 {{/each}}
             </div>

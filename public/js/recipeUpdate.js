@@ -43,8 +43,8 @@ const getData = () => {
         const formData = new FormData(form);
 
         const title = formData.get('title');
-        const ingredients = formData.get('ingredients');
-        const directions = formData.get('directions');
+        const ingredients = formData.getAll('ingredients');
+        const directions = formData.getAll('directions');
 
         console.log(title)
         const fetchBody = {
