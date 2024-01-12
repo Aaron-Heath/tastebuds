@@ -66,6 +66,11 @@ body {
     font-family:'Hind Siliguri', sans-serif;
 }
 
+.carousel{
+    width:50%;
+    height:50%;
+    margin:auto;
+}
 .pencil{
     width:25px;
 }
