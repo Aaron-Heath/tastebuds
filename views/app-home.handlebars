@@ -27,7 +27,7 @@
                     </ul>
                 </div> --}}
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Username:</li>
+                    <li class="list-group-item">Username: {{user.username}}</li>
                     <li class="list-group-item">Cookbooks Created:</li>
                     <li class="list-group-item">Recipes Created:</li>
                 </ul>
@@ -42,14 +42,11 @@
                     <h5 class="card-title">My Cookbooks</h5>
                     <a href="#" class="add-btn btn-primary">+</a>
                 </div>
-                {{>app-cookbooks}}
-
-                {{!-- <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action">Cookbook 1</button>
-                    <button type="button" class="list-group-item list-group-item-action">Cookbook 2</button>
-                    <button type="button" class="list-group-item list-group-item-action">Cookbook 3</button>
-                    <button type="button" class="list-group-item list-group-item-action">Cookbook 4</button>
-                </div> --}}
+                <div class="list-group">
+                    {{#each cookbooks as |cookbook|}}
+                        {{> app-cookbooks}}
+                    {{/each}}
+                </div>
                 
             </div>
         </div>
@@ -66,7 +63,13 @@
                         ...
                     </ul>
                 </div>
-                <div id="carouselExampleCaptions" class="carousel slide">
+                 <div class="list-group">
+                    {{#each sharedCookbooks as |cookbook|}}
+                        {{> app-cookbooks}}
+                    {{/each}}
+                </div>                
+            </div>
+                {{!-- <div id="carouselExampleCaptions" class="carousel slide">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -111,7 +114,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
 
