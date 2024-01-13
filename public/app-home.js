@@ -1,6 +1,9 @@
 async function fetchUserData() {
     try {
-        const response = await fetch('');
+        const response = await fetch('./appRoutes', {
+            method: 'GET',
+            headers: { 'content-type': 'application/json'}});
+        
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
