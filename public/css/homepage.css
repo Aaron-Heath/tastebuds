@@ -7,7 +7,7 @@
     --linen: #EFE6DD;
 }
 body {
-     display:flex;
+     /* display:flex; */
     background-image: url(/assets/Images/landingpage.png);
     background-size: cover;
     background-attachment: fixed;
@@ -16,7 +16,7 @@ body {
 .card {
     align-items: center;
     justify-content: center;
-    margin-top: 30%;
+    margin-top: 30px;
     margin-left: 50px;
     margin-right: 50px;
     background-color: #F4C095;
