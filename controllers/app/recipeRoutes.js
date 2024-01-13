@@ -11,12 +11,40 @@ router.get('/', async (req, res) => {
             cookbook.get({ plain: true })
         );
 
-        res.render('app-recipe-create', { cookbooks });
+        res.render('app-recipe-create', { cookbooks, logged_in: req.session.logged_in });
 
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
     }
+});
+
+router.get('/:id', async (req,res) => {
+    // Temporary Recipe for data purposes
+    const recipe = {
+        title: "Popcorn",
+        creator_id: 1,
+        ingredients: [
+            "5oz popcorn kernels",
+            "Heat"
+        ],
+        directions: [
+            {
+                step: 1,
+                direction: "Put bag in microwave."
+            },
+            {
+                step: 2,
+                direction: "Pop the corn."
+            },
+            {
+                step: 3,
+                direction: "Stop it before it burns."
+            },
+            
+        ]
+    }
+    res.render("app-recipe", { recipe });
 });
 
 // The /app/recipe/update/:id endpoint for looking at specific recipes
