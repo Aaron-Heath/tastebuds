@@ -1,75 +1,31 @@
-// const Cookbook = require('../../models/Cookbook');
-// const withAuth = require('../../utils/auth');
-
-// const router = require('express').Router();
-
-// router.all('*',withAuth);
-// router.get('/', async (req,res) => {
-//     const cookbookData = await Cookbook.findAll({
-//         where: {
-//             creator_id: req.session.user.id
-//         }});
-//     const cookbooks = cookbookData.map((cookbook) => 
-//         cookbook.get({plain: true}));
-//     console.log(cookbooks);
-//     res.render('app-home', { cookbooks, logged_in: req.session.logged_in });
-// });
-
-
-
-// router.get('/cookbook/:cookbook_id', async (req,res) => {
-//     const cookbookData = await Cookbook.findOne({
-//         where: {
-//             id : req.params.cookbook_id
-//         }
-//     });
-
-//     const cookbook = cookbookData.get({plan: true});
-//     res.render('app-cookbook', { ...cookbook, logged_in: req.session.logged_in });
-// });
-
-// router.get('/public', async (req,res) => {
-//     res.render('app-public', {logged_in: req.session.logged_in});
-// });
-
-
-
-// module.exports = router;
+const { User } = require('../../models');
 const Cookbook = require('../../models/Cookbook');
 const User = require('../../models/User')
 const withAuth = require('../../utils/auth');
 
 const router = require('express').Router();
 
-router.all('*', withAuth);
+router.all('*',withAuth);
+router.get('/', async (req,res) => {
+    const cookbookData = await Cookbook.findAll({
+        where: {
+            creator_id: req.session.user.id
+        }});
+    const cookbooks = cookbookData.map((cookbook) => 
+        cookbook.get({plain: true}));
 
-router.get('/', async (req, res) => {
-    try {
-        // Get user ID from the session
-        const userId = req.session.user.id;
+    const userData = await User.findByPk(req.session.user.id);
 
-        // Retrieve cookbooks for the logged-in user
-        const cookbookData = await Cookbook.findAll({
-            where: {
-                creator_id: req.session.userId
-            }
-        });
+    const sharedCookbookData = await userData.getCookbooks();
+    const sharedCookbooks = sharedCookbookData.map(sharedCookbook => sharedCookbook.get());
+    const user = userData.get();
+    // console.log(userData.get());
 
-        const userData = await User.findByPk(userId);
-
-        // Map cookbooks to plain objects
-        const cookbooks = cookbookData.map((cookbook) =>
-            cookbook.get({ plain: true })
-        );
-        console.log('User Data:', userData);
-        console.log(cookbooks);
-
-        // Render the page with cookbooks and user ID
-        res.render('app-home', { cookbooks, userData, logged_in: req.session.logged_in });
-    } catch (error) {
-        console.error('Error:', error.message);
-        res.status(500).json({ error: 'Failed to retrieve data' });
-    }
+    res.render('app-home', { 
+        cookbooks: cookbooks,
+        sharedCookbooks: sharedCookbooks,
+        user: user, 
+        logged_in: req.session.logged_in });
 });
 
 router.get('/cookbook/:cookbook_id', async (req, res) => {
