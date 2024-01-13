@@ -1,0 +1,37 @@
+:root {
+    --drkgrn: #071E22;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #ff523b;
+    --linen: #EFE6DD;
+}
+
+.title{
+    margin: 10px;
+    font-family: 'Chewy', system-ui;
+    /* font-family: 'Hind Siliguri', sans-serif; */
+    color: var(--grn);
+    text-align: center;
+}
+
+body{
+    background-color:var(--linen);
+}
+
+.form-control{
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.btn{
+    background-color: var(--ltgrn);
+    font-family: 'Hind Siliguri', sans-serif;
+}
+.btn-primary{
+    background-color:var(--grn);
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.container{
+    margin-top: 25%;
+}
