@@ -1,6 +1,7 @@
 async function fetchUserData() {
     try {
-        const response = await fetch('/controllers/app/appRoutes');
+        const response = await fetch('');
+
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -10,6 +11,14 @@ async function fetchUserData() {
         console.error('Error fetching user data:', error.message);
     }
 }
+
+fetchUserData()
+    .then(userData => {
+        console.log('User Data:', userData);
+    })
+    .catch(error => {
+        console.error('Error:', error.message);
+    });
 
 // Function to update the list items based on the selected cookbook
 function updateListItems(userData) {
@@ -31,7 +40,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Fetch user data
     const userData = await fetchUserData();
 
-    // Example: Call the function with a selected cookbook (replace 'Cookbook 1' with the actual selected cookbook)
+  
     updateListItems(userData);
 });
   
@@ -40,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function handleEditButtonClick() {
     try {
         // Fetch data from a specific endpoint
-        const response = await fetch('your_api_endpoint');
+        const response = await fetch('/recipeRoutes');
         
         // Check if the response is successful
         if (!response.ok) {
