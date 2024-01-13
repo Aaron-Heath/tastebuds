@@ -8,7 +8,6 @@ const appRoutes = require('./app');
 
 router.use('/', homeRoutes);
 router.use('/api', apiRoutes);
-router.use('/test', testRoutes);
 router.use('/app', appRoutes);
 
 module.exports = router;
