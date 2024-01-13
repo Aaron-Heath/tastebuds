@@ -63,8 +63,25 @@ async function submitForm(event) {
 
         // Render to screen
         formContainer.appendChild(activationPrompt);
+       
+        // set interval to redirect to login page after 20 seconds if user doesnt click button to redirect
+        setTimeout(() => {
+            window.location.href = '/login';
+        }), 20000; // 20 seconds
 
-        // TODO set interval prompt link to login page. 
+
+     
+        // create button to redirect to login page
+        const loginButton = document.createElement('button');
+        loginButton.className = "btn btn-primary";
+        loginButton.textContent = "Login";
+        loginButton.addEventListener('click', () => {
+            window.location.href = '/login'; 
+        });
+        formContainer.appendChild(loginButton);
+        
+
+
 
 
 
