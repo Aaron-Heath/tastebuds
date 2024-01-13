@@ -1,17 +1,45 @@
 const router = require('express').Router();
-const { Cookbook, Recipe } = require('../../models')
+const { Cookbook, Recipe, User } = require('../../models')
 
 // The /app/recipe endpoint for getting the form to create a new recipe
 router.get('/', async (req, res) => {
     try {
-        const dbCookbookData = await Cookbook.findAll();
+        const userData = await User.findByPk(req.session.user.id);
+
+        // Get cookbooks that user can edit
+        const sharedCookbookData = await userData.getCookbooks({
+            through:{
+                where: {
+                    permissions: 'editor'
+                }
+            }
+        });
+        console.log(req.session.user.id);
+        // console.log(sharedCookbookData);
+
+        const sharedCookbooks = await sharedCookbookData.map((cookbook) => cookbook.get());
+        console.log(sharedCookbooks);
+
+
+        const dbCookbookData = await Cookbook.findAll({
+            where: {
+                creator_id: req.session.user.id
+            }
+        });
 
         // Pulls list of available cookbooks for dropdown menu
         const cookbooks = await dbCookbookData.map((cookbook) =>
             cookbook.get({ plain: true })
         );
 
-        res.render('app-recipe-create', { cookbooks, logged_in: req.session.logged_in });
+        // Add shared cookbooks to cookbook list
+        cookbooks.push(...sharedCookbooks);
+        console.log(cookbooks);
+
+
+        res.render('app-recipe-create', { 
+            cookbooks:cookbooks,
+            logged_in: req.session.logged_in });
 
     } catch (err) {
         console.error(err);
