@@ -1,0 +1,33 @@
+<div class="row d-flex justify-content-center">
+    {{!-- Cookbook Update (PUT request) --}}
+    <div class="form-container col-md-4">
+        <form class="form">
+
+            <h1 class="username" data-user-id="2" data-recipe-id="{{cookbook.id}}">Update a Cookbook</h1>
+            <div class="row">
+
+                <div class="mb-3 col-6">
+                    <input class="form-control" type="text" id="title" name="title"
+                        placeholder="{{cookbook.title}}" value="{{cookbook.title}}">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control description" type="text" name="description"
+                    placeholder="{{cookbook.description}}" value="{{cookbook.description}}">
+            </div>
+
+            <div class="mb-3">
+                <input class="form-control directions" type="checkbox" name="isPublic"
+                    checked="{{cookbook.isPublic}}">
+            </div>
+
+
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{{!-- <script src="../../../js/recipeUpdate.js"></script> --}}
