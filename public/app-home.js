@@ -3,7 +3,7 @@
   async function handleEditButtonClick() {
     try {
         // Fetch data from a specific endpoint
-        const response = await fetch('');
+        const response = await fetch(''); // need path to edit page here 
         
         // Check if the response is successful
         if (!response.ok) {
@@ -29,7 +29,7 @@
     // Function for add button click
     function handleAddButtonClick() {
         // this will url for creating cookbook page
-        const newPageURL = '/app/cookbook';
+        const newPageURL = ''; // need path to create cookbook page here
 
         // Navigate to the new page
         window.location.href = newPageURL;
