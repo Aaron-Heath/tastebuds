@@ -1,58 +1,9 @@
-async function fetchUserData() {
-    try {
-        const response = await fetch('./appRoutes', {
-            method: 'GET',
-            headers: { 'content-type': 'application/json'}});
-        
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching user data:', error.message);
-    }
-}
-
-fetchUserData()
-    .then(userData => {
-        console.log('User Data:', userData);
-    })
-    .catch(error => {
-        console.error('Error:', error.message);
-    });
-
-// Function to update the list items based on the selected cookbook
-function updateListItems(userData) {
-    const usernameItem = document.querySelector('.list-group-item.username');
-    const cookbooksCreatedItem = document.querySelector('.list-group-item.cookbooks-created');
-    const recipesCreatedItem = document.querySelector('.list-group-item.recipes-created');
-
-    // Update the content based on the selected cookbook and user data
-    usernameItem.textContent = `Username: ${userData.username}`;
-    cookbooksCreatedItem.textContent = `Cookbooks Created: ${Object.keys(userData.cookbooksCreated).length}`;
-    //total number of recipes created accros all cookbooks 
-    const totalRecipesCreated = Object.values(userData.cookbooksCreated).reduce((total, cookbook) => total + cookbook.recipesCreated, 0);
-    recipesCreatedItem.textContent = `Recipes Created: ${totalRecipesCreated}`;
-}
-    
-
-// Example: Call the functions when the page loads
-document.addEventListener('DOMContentLoaded', async () => {
-    // Fetch user data
-    const userData = await fetchUserData();
-
-  
-    updateListItems(userData);
-});
-  
-  
   // Function to handle the edit button click
   async function handleEditButtonClick() {
     try {
         // Fetch data from a specific endpoint
-        const response = await fetch('/recipeRoutes');
+        const response = await fetch('');
         
         // Check if the response is successful
         if (!response.ok) {

@@ -1,6 +1,5 @@
 const { User } = require('../../models');
 const Cookbook = require('../../models/Cookbook');
-const User = require('../../models/User')
 const withAuth = require('../../utils/auth');
 
 const router = require('express').Router();
