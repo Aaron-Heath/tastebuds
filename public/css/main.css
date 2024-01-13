@@ -26,3 +26,10 @@ a {
     border: 2px solid blue;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
