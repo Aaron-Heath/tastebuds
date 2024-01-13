@@ -1,3 +1,4 @@
+const { User } = require('../../models');
 const Cookbook = require('../../models/Cookbook');
 const withAuth = require('../../utils/auth');
 
@@ -11,8 +12,19 @@ router.get('/', async (req,res) => {
         }});
     const cookbooks = cookbookData.map((cookbook) => 
         cookbook.get({plain: true}));
-    console.log(cookbooks);
-    res.render('app-home', { cookbooks, logged_in: req.session.logged_in });
+
+    const userData = await User.findByPk(req.session.user.id);
+
+    const sharedCookbookData = await userData.getCookbooks();
+    const sharedCookbooks = sharedCookbookData.map(sharedCookbook => sharedCookbook.get());
+    const user = userData.get();
+    // console.log(userData.get());
+
+    res.render('app-home', { 
+        cookbooks: cookbooks,
+        sharedCookbooks: sharedCookbooks,
+        user: user, 
+        logged_in: req.session.logged_in });
 });
 
 
