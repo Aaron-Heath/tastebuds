@@ -2,6 +2,7 @@ const form = document.querySelector('.form');
 
 // Retrieves id from username element to be used in creating new recipe
 const usernameEl = document.querySelector('.username');
+console.log(usernameEl)
 const creator_id = parseInt(usernameEl.dataset.userId)
 console.log(creator_id)
 
