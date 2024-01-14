@@ -1,0 +1,44 @@
+<div class="row d-flex justify-content-center">
+    {{!-- Cookbook Creation (POST request) --}}
+    <div class="form-container col-md-4">
+        <form class="form">
+
+            <h1 class="username" data-user-id="{{creator_id}}">Create a Cookbook</h1>
+            <div class="row">
+
+                 <div class="mb-3 col-6">
+                    <label>Title:</label>
+                    <input class="form-control" type="text" id="title" name="title">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Description: </label>
+                <input class="form-control description" type="text" name="description">
+            </div>
+
+            <div class="mb-3">
+                <label>Viewers: </label>
+                <input class="form-control viewers" type="text" name="viewers">
+            </div>
+
+            <div class="mb-3">
+                <label>Editors: </label>
+                <input class="form-control editors" type="text" name="editors">
+            </div>
+
+            <div class="mb-3">
+                <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off">
+                <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
+                    public!</label>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="../../../js/cookbookCreate.js"></script>
