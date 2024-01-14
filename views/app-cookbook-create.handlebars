@@ -6,32 +6,31 @@
             <h1 class="username" data-user-id="2">Create a Cookbook</h1>
             <div class="row">
 
-                <div class="mb-3 col-6">
-                    <input class="form-control" type="text" id="title" name="title" required placeholder="Title">
+                 <div class="mb-3 col-6">
+                    <label>Title:</label>
+                    <input class="form-control" type="text" id="title" name="title">
                 </div>
             </div>
 
             <div class="mb-3">
-                <input class="form-control" type="text" id="ingredients" name="ingredients" required
-                    placeholder="Ingredients">
+                <label>Description: </label>
+                <input class="form-control description" type="text" name="description">
             </div>
 
             <div class="mb-3">
-                <input class="form-control" type="text" id="directions" name="directions" required
-                    placeholder="Directions">
+                <label>Viewers: </label>
+                <input class="form-control viewers" type="text" name="viewers">
             </div>
 
-            <div class="mb-3 btn-group">
-                <button class="form-control btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true"
-                    aria-expanded="false" id="cookbookName" name="cookbookName" required>
-                    Choose a cookbook for your recipe!
-                </button>
+            <div class="mb-3">
+                <label>Editors: </label>
+                <input class="form-control editors" type="text" name="editors">
+            </div>
 
-                <ul class="dropdown-menu">
-                    {{#each cookbooks as |cookbook|}}
-                    {{> cookbook-list}}
-                    {{/each}}
-                </ul>
+            <div class="mb-3">
+                <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off">
+                <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
+                    public!</label>
             </div>
 
             <div class="mb-3 d-flex justify-content-center">
