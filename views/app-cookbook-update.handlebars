@@ -1,0 +1,52 @@
+<div class="row d-flex justify-content-center">
+    {{!-- Cookbook Update (PUT request) --}}
+    <div class="form-container col-md-4">
+        <form class="form">
+
+            <h1 class="username" data-user-id="{{creator_id}}" data-cookbook-id="{{cookbook.id}}">Update a Cookbook</h1>
+            <div class="row">
+
+                <div class="mb-3 col-6">
+                    <label>Title:</label>
+                    <input class="form-control" type="text" id="title" name="title" placeholder="{{cookbook.title}}"
+                        value="{{cookbook.title}}">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label>Description: </label>
+                <input class="form-control description" type="text" name="description"
+                    placeholder="{{cookbook.description}}" value="{{cookbook.description}}">
+            </div>
+
+            <div class="mb-3">
+                <label>Viewers: </label>
+                {{#each cookbook.viewers}}
+                <input class="form-control viewers" type="text" name="viewers" placeholder="{{this}}" value="{{this}}">
+                {{/each}}
+            </div>
+
+            <div class="mb-3">
+                <label>Editors: </label>
+                {{#each cookbook.editors}}
+                <input class="form-control editors" type="text" name="editors" placeholder="{{this}}" value="{{this}}">
+                {{/each}}
+            </div>
+
+            <div class="mb-3">
+                <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off"
+                    data-is-public="{{cookbook.isPublic}}">
+                <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
+                    public!</label>
+            </div>
+
+
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script src="../../../js/cookbookUpdate.js"></script>
