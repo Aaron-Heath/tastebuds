@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/css/recipe.css">
 <div class="row d-flex justify-content-center">
     {{!-- Recipe Creation (POST request) --}}
     <div class="form-container col-md-4">
@@ -11,14 +12,22 @@
                 </div>
             </div>
 
-            <div class="mb-3">
-                <input class="form-control" type="text" id="ingredients" name="ingredients" required
-                    placeholder="Ingredients">
+            <div class="mb-3" id="ingredients-container">
+                <div class="row mb-3">
+                    <div class="col-10">
+                        <input class="form-control" type="text" id="ingredients" name="ingredients" required placeholder="Ingredients">
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                        {{!-- <img class="minus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus"/> --}}
+                    </div>
+                </div>
             </div>
 
-            <div class="mb-3">
-                <input class="form-control" type="text" id="directions" name="directions" required
-                    placeholder="Directions">
+            <div class="mb-3" id="directions-container">
+                <div class="row">
+                    <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions">
+                </div>
             </div>
 
             <div class="mb-3 btn-group">
