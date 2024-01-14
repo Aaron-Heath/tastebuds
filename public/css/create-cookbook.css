@@ -1,0 +1,37 @@
+:root {
+    --drkgrn: #1b4750;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #ff523b;
+    --linen: #EFE6DD;
+}
+
+*{
+    background-color: var(--linen);
+}
+
+.form{
+    width: 90%;
+}
+.mb-3{
+    font-family: 'Hind Siliguri', sans-serif;
+    width: 100%;
+}
+
+label{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.username{
+    font-family: 'Chewy', system-ui;
+    text-align: center;
+    color: var(--grn);
+
+}
+
+.btn{
+    font-family: 'Red Hat Display', sans-serif;
+    background-color: var(--grn);
+}
+

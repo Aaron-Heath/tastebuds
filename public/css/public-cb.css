@@ -1,0 +1,36 @@
+:root {
+    --drkgrn: #071E22;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #ff523b;
+    --linen: #EFE6DD;
+}
+
+body{
+    background-color: var(--linen);
+}
+.card{
+    background-color: var(--linen);
+    width: 100%;
+    box-shadow: 2px 2px 10px gray;
+    padding: 12px;
+}
+
+h1{
+    font-family:'Chewy', system-ui;
+    font-size: 25px;
+    margin-bottom: 5%;
+    color: var(--grn);
+}
+.list-group-item{
+    font-size: 18px;
+    text-align: left;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.subheader{
+    font-family:'Hind Siliguri', sans-serif;
+    font-size: 12px;
+    color: gray;
+}

@@ -9,10 +9,15 @@
     --grn: #1d7874;
     --ltgrn: #679289;
     --tan: #F4C095;
-    --red: #EE2E31;
+    --red: #ff523b;
     --linen: #EFE6DD;
 }
 
+.navbar-brand {
+    color: #ff523b;
+    font-family: 'Chewy', system-ui;
+    font-size: 23px;
+}
 
 body {
     /* background-color: var(--linen); */
@@ -21,6 +26,12 @@ a {
     text-decoration: none;
 }
 
+.navbar{
+    background-color: #679289;
+}
+.nav-link{
+    font-family: 'Hind Siliguri', sans-serif;
+}
 
 .border-blue {
     border: 2px solid blue;
