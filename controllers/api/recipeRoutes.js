@@ -5,6 +5,7 @@ const { Recipe, CookbookRecipe } = require('../../models');
 // For creating new recipes
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body);
         // Creates new recipe
         const newRecipe = await Recipe.create(
             {
