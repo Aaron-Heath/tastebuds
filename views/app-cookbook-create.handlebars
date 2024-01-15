@@ -1,44 +1,59 @@
-<div class="row d-flex justify-content-center">
-    {{!-- Cookbook Creation (POST request) --}}
-    <div class="form-container col-md-4">
-        <form class="form">
+<head>
+    <link rel="stylesheet" href="/css/create-cookbook.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+</head>
 
-            <h1 class="username" data-user-id="{{creator_id}}">Create a Cookbook</h1>
-            <div class="row">
+<body>
+    <div class="row d-flex justify-content-center">
+        {{!-- Cookbook Creation (POST request) --}}
+        <div class="form-container col-md-4">
+            <form class="form">
 
-                 <div class="mb-3 col-6">
-                    <label>Title:</label>
-                    <input class="form-control" type="text" id="title" name="title">
+                <h1 class="username" data-user-id="{{creator_id}}">Create a Cookbook</h1>
+                <div class="row">
+
+                    <div class="mb-3 col-6">
+                        <label>Title:</label>
+                        <input class="form-control" type="text" id="title" name="title" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="mb-3">
-                <label>Description: </label>
-                <input class="form-control description" type="text" name="description">
-            </div>
+                <div class="mb-3">
+                    <label>Description: </label>
+                    <input class="form-control description" type="text" name="description">
+                </div>
 
-            <div class="mb-3">
-                <label>Viewers: </label>
-                <input class="form-control viewers" type="text" name="viewers">
-            </div>
+                <div class="mb-3">
+                    <label>Viewers: </label>
+                    <input class="form-control viewers" type="text" name="viewers">
+                </div>
 
-            <div class="mb-3">
-                <label>Editors: </label>
-                <input class="form-control editors" type="text" name="editors">
-            </div>
+                <div class="mb-3">
+                    <label>Editors: </label>
+                    <input class="form-control editors" type="text" name="editors">
+                </div>
 
-            <div class="mb-3">
-                <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off">
-                <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
-                    public!</label>
-            </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Make this Cookbook Public?
+                    </label>
+                </div>
+                {{!-- <div class="mb-3">
+                    <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
+                        public!</label>
+                </div> --}}
+                <br>
+                <div class="mb-3 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
 
-            <div class="mb-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
+</body>
 <script src="../../../js/cookbookCreate.js"></script>

@@ -3,21 +3,27 @@
     --grn: #1d7874;
     --ltgrn: #679289;
     --tan: #F4C095;
-    --red: #EE2E31;
+    --red: #ff523b;
     --linen: #EFE6DD;
+}
+
+body{
+    /* background-color: var(--red); */
+    background-image: url(/assets/Images/signin.png);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 form, #activation-prompt {
     min-height: 50vh;
     min-width: 80%;
-
     padding: 40px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 25%;
-
-    background-color: white;
+    border-radius: 10%;
+    background-color: var(--linen);
 }
 
 .form-control {
@@ -32,13 +38,28 @@ form, #activation-prompt {
 }
 
 .form-subtitle {
-    /* font-weight: bold; */
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    text-align: center;
 }
 
-
-
 h1 {
-    text-align: left;
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Chewy', system-ui;
+    color: var(--red);
+    text-shadow: 3px 2px 2px white;
+}
+
+.btn{
+   background-color: var(--ltgrn); 
+   border-color: #679289;
+   font-family: 'Hind Siliguri', sans-serif;
+   font-size: 18px; 
+}
+
+.form-control{
+    font-family: 'Red Hat Display', sans-serif;
 }
 #activation-prompt {
     /* border: 2px blue solid; */
