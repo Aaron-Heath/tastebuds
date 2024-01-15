@@ -1,9 +1,9 @@
 const form = document.querySelector('.form');
 
 // Retrieves id from username element to be used in creating new recipe
-const usernameEl = document.querySelector('.username');
-const creator_id = parseInt(usernameEl.dataset.userId)
-console.log(creator_id)
+// const usernameEl = document.querySelector('.username');
+// const creator_id = parseInt(usernameEl.dataset.userId)
+// console.log(creator_id)
 
 
 // For creating new recipes
@@ -29,6 +29,8 @@ async function createRecipe(event) {
             const data = await response.json();
             console.log(data)
             console.log('Successful POST request!');
+
+            window.location.href = 'cookbook/:cookbook_id';
             return data;
         }
 

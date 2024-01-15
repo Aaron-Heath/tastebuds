@@ -56,8 +56,10 @@ router.get('/cookbook/:cookbook_id', async (req, res) => {
     }
 });
 
+
 router.get('/public', (req, res) => {
     res.render('app-public', { logged_in: req.session.logged_in });
 });
+
 
 module.exports = router;

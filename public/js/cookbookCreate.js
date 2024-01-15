@@ -30,6 +30,8 @@ const createCookbook = async (event) => {
             const data = await response.json();
             console.log(data)
             console.log('Successful POST request!');
+
+            window.location.href = 'cookbook/:cookbook_id';
             return data;
         }
 
