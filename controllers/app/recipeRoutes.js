@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Cookbook, Recipe, User } = require('../../models')
+const withAuth = require('../../utils/auth');
+router.all('*', withAuth);
 
 // The /app/recipe endpoint for getting the form to create a new recipe
 router.get('/', async (req, res) => {
@@ -8,7 +10,7 @@ router.get('/', async (req, res) => {
 
         // Get cookbooks that user can edit
         const sharedCookbookData = await userData.getCookbooks({
-            through:{
+            through: {
                 where: {
                     permissions: 'editor'
                 }
@@ -36,10 +38,14 @@ router.get('/', async (req, res) => {
         cookbooks.push(...sharedCookbooks);
         console.log(cookbooks);
 
+        const creator_id = req.session.user.id;
 
-        res.render('app-recipe-create', { 
-            cookbooks:cookbooks,
-            logged_in: req.session.logged_in });
+
+        res.render('app-recipe-create', {
+            cookbooks: cookbooks,
+            creator_id: creator_id,
+            logged_in: req.session.logged_in
+        });
 
     } catch (err) {
         console.error(err);
@@ -47,7 +53,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req,res) => {
+router.get('/:id', async (req, res) => {
     // Temporary Recipe for data purposes
     const recipe = {
         title: "Popcorn",
@@ -69,7 +75,7 @@ router.get('/:id', async (req,res) => {
                 step: 3,
                 direction: "Stop it before it burns."
             },
-            
+
         ]
     }
     res.render("app-recipe", { recipe });
@@ -83,7 +89,13 @@ router.get('/update/:id', async (req, res) => {
         const recipe = dbRecipeData.get({ plain: true });
         console.log(recipe)
 
-        res.render('app-recipe-update', { recipe });
+        const creator_id = req.session.user.id;
+
+        res.render('app-recipe-update', {
+            recipe,
+            creator_id: creator_id,
+            logged_in: req.session.logged_in
+        });
 
     } catch (err) {
         console.error(err);

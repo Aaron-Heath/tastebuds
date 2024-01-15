@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
         // Gets current user ID for later use
         const creator_id = req.session.user.id;
 
-        res.render('app-cookbook-create', {creator_id: creator_id});
+        res.render('app-cookbook-create', {creator_id: creator_id, logged_in: req.session.logged_in });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
@@ -32,7 +32,11 @@ router.get('/update/:id', async (req, res) => {
         // Gets current user ID for later use
         const creator_id = req.session.user.id;
 
-        res.render('app-cookbook-update', { cookbook, users, creator_id: creator_id });
+        res.render('app-cookbook-update', { 
+            cookbook, 
+            users, 
+            creator_id: creator_id,
+            logged_in: req.session.logged_in  });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
