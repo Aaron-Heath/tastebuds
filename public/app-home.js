@@ -36,24 +36,6 @@
     }
 
 
-// // Function to handle the dropdown item click
-// function handleDropdownItemClick(item) {
-//     // Example: Navigate to a page based on the clicked item
-//     switch (item) {
-//         case 'Item 1':
-//             window.location.href = '/path/';
-//             break;
-//         case 'Item 2':
-//             window.location.href = '/path/';
-//             break;
-//         // Add more cases as needed
-//         default:
-//             // Handle other cases or perform a default action
-//             break;
-//     }
-// }
-//     console.log(`Dropdown item clicked: ${item}`);
-
 
 // Event listeners
 const editButton = document.querySelector('.edit');
