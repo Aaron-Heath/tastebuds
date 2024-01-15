@@ -50,7 +50,7 @@ const getData = async () => {
         const editors = formData.getAll('editors');
 
         // Gets checkbox status for isPublic
-        const checkbox = document.querySelector('#isPublic');
+        const checkbox = document.querySelector('#defaultCheck1');
         let isPublic = false;
         if (checkbox.checked) {
             isPublic = true;
