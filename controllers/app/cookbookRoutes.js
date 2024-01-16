@@ -31,8 +31,17 @@ router.get('/:cookbook_id', async (req, res) => {
                 id: req.params.cookbook_id,
                 creator_id: userId
             },
-            include: Recipe
+            include: {
+                model: Recipe,
+                include: {
+                    model: User
+                }
+            }
+
+            // include: User
         });
+
+        console.log(cookbookData)
 
         // Check if the cookbook exists
         if (!cookbookData) {
