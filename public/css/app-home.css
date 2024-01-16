@@ -26,14 +26,9 @@ body {
     margin-right: 15%;
 }
 
-small{
-    font-family: 'Red Hat Display', sans-serif;
-}
-
-
 .list-group{
     text-align: left;
-    font-family: 'Red Hat Display', sans-serif;
+    font-family: 'Dosis', sans-serif;
 
 }
 
@@ -84,9 +79,8 @@ small{
 }
 
 li {
-    font-family: 'Red Hat Display', sans-serif;
-
-    font-size: 15px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 12px;
 }
 .nav-item {
     font-family:'Hind Siliguri', sans-serif;
@@ -94,10 +88,14 @@ li {
 
 /* shared cookbook titles */
 .mb-1{
-    font-family: 'Red Hat Display', sans-serif;
-    font-size: 15px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
 }
 
+li{
+    font-family: 'Dosis', sans-serif;
+    font-size: 17px;
+}
 #offcanvasNavbarLabel{
     font-family: 'Hind Siliguri', sans-serif;
 }

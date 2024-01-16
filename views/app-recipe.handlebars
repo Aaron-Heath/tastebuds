@@ -8,14 +8,13 @@
 <div class="app-main">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">{{ recipe.title }}</h5>
-            {{!-- <h6 class="card-subtitle mb-2 text-body-secondary">Brief Description for the recipe</h6> --}}
+            <h1>{{ recipe.title }}</h1>
         </div>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Ingredients</h5>
+            <h2 class="card-title">Ingredients</h2>
             <ul class="list-group list-group-flush">
                 {{#each recipe.ingredients as |ingredient|}}
                 <li class="list-group-item">{{ingredient}}</li>
@@ -43,7 +42,7 @@
                     <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true"
                         class="scrollspy-example" tabindex="0">
                         {{#each recipe.directions as |direction|}}
-                        <h4 id="list-item-1">Step {{direction.step}}</h4>
+                        <h3>Step {{direction.step}}</h3>
                         <p>{{direction.direction}}</p>
                         {{/each}}
                         {{!-- <h4 id="list-item-2">Step 2</h4>

@@ -1,0 +1,63 @@
+:root {
+    --drkgrn: #071E22;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #ff523b;
+    --linen: #EFE6DD;
+}
+
+body{
+    background-color: var(--linen);
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.card-title{
+    font-family: 'Hind Siliguri', sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 28px;
+    font-family:'Red Hat Display', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 0px;
+    color: var(--grn);
+    
+}
+
+li{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+p {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+h3 {
+    font-family: 'Hind Siliguri', sans-serif;
+    
+}
+
+.card {
+    margin: 15px;
+}
+.list-group-item{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.list-group-item.active {
+    color:black;
+    background-color: white;
+    border-color: #dee2e6;
+}
+
+.list-group-item-action {
+    width: 100%;
+    color: rgba(33,37,41,0.75);
+    text-align: inherit;
+}
