@@ -31,40 +31,6 @@ router.get('/', async (req,res) => {
         logged_in: req.session.logged_in });
 });
 
-router.get('/cookbook/:cookbook_id', async (req, res) => {
-    try {
-        // Get user ID from the session
-        const userId = req.session.user.id;
-
-        if(!req.params.shared) {
-            // TODO: Query shared cookin bookins
-        }
-
-        // Retrieve the specified cookbook for the logged-in user
-        let cookbookData = await Cookbook.findOne({
-            where: {
-                id: req.params.cookbook_id,
-                creator_id: userId
-            },
-            include: Recipe
-        });
-
-        // Check if the cookbook exists
-        if (!cookbookData) {
-            return res.status(404).render('404', { logged_in: req.session.logged_in });
-        }
-
-        // Get the cookbook as a plain object
-        const cookbook = cookbookData.get({ plain: true });
-        console.log(cookbook);
-
-        // Render the page with the cookbook, user ID, and logged-in status
-        res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in });
-    } catch (error) {
-        console.error('Error:', error.message);
-        res.status(500).json({ error: 'Failed to retrieve data' });
-    }
-});
 
 router.get('/public', (req, res) => {
     res.render('app-public', { logged_in: req.session.logged_in });
