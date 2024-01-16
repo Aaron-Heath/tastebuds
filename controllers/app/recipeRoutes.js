@@ -49,29 +49,40 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req,res) => {
     // Temporary Recipe for data purposes
-    const recipe = {
-        title: "Popcorn",
-        creator_id: 1,
-        ingredients: [
-            "5oz popcorn kernels",
-            "Heat"
-        ],
-        directions: [
-            {
-                step: 1,
-                direction: "Put bag in microwave."
-            },
-            {
-                step: 2,
-                direction: "Pop the corn."
-            },
-            {
-                step: 3,
-                direction: "Stop it before it burns."
-            },
-            
-        ]
+    console.log("got a request")
+    const recipeData = await Recipe.findByPk(req.params.id);
+
+    if(!recipeData) {
+        res.sendStatus(404);
     }
+
+    const recipe = recipeData.get({plain: true});
+    console.log(recipe);
+
+
+    // const recipe = {
+    //     title: "Popcorn",
+    //     creator_id: 1,
+    //     ingredients: [
+    //         "5oz popcorn kernels",
+    //         "Heat"
+    //     ],
+    //     directions: [
+    //         {
+    //             step: 1,
+    //             direction: "Put bag in microwave."
+    //         },
+    //         {
+    //             step: 2,
+    //             direction: "Pop the corn."
+    //         },
+    //         {
+    //             step: 3,
+    //             direction: "Stop it before it burns."
+    //         },
+            
+    //     ]
+    // }
     res.render("app-recipe", { recipe });
 });
 
