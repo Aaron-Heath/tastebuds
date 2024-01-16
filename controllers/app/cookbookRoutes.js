@@ -79,9 +79,9 @@ router.get('/update/:id', async (req, res) => {
             }
         });
         const userCookbooks = await dbUserCookbookData.map((userCookbook) => 
-        ({ plain: true })
+        userCookbook.get({ plain: true })
         );
-        console.log(userCookbook)
+        console.log(userCookbooks)
 
         // Gets current user ID for later use
         const creator_id = req.session.user.id;

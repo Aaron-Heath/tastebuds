@@ -24,7 +24,7 @@
                 {{!-- Checks for viewer permissions before rendering --}}
                 {{#each userCookbooks as |userCookbook|}}
                 {{#if (eq userCookbook.permissions 'viewer')}}
-                {{> viewer-editor-list}}
+                {{> viewer-list}}
                 {{/if}}
                 {{/each}}
             </div>
@@ -34,7 +34,7 @@
                 {{!-- Checks for editor permissions before rendering --}}
                 {{#each userCookbooks as |userCookbook|}}
                 {{#if (eq userCookbook.permissions 'editor')}}
-                {{> viewer-editor-list}}
+                {{> editor-list}}
                 {{/if}}
                 {{/each}}
             </div>
