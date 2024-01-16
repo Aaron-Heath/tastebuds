@@ -18,7 +18,7 @@ router.get('/login', async (req,res) => {
     // If already logged in
     // Redirect to application main page
     if(req.session.logged_in) {
-        res.redirect('/app', { logged_in: req.session.logged_in });
+        res.redirect('/app');
     }
 
     // else serve login page
