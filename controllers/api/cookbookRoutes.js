@@ -1,8 +1,8 @@
-const { Cookbook } = require('../../models');
+const { Cookbook, UserCookbook } = require('../../models');
 
 const router = require('express').Router();
 
-// creating cookbooks
+// Creating cookbooks
 router.post('/', async (req,res) => {
     // creates new cookbook
     try {
@@ -16,6 +16,16 @@ router.post('/', async (req,res) => {
                 creator_id: req.body.creator_id
             }
         );
+
+        // Creates new UserCookbook model to link newly created cookbook with users
+        await UserCookbook.create(
+            {
+                user_id: req.body.user_id,
+                cookbook_id: req.body.cookbook_id,
+                permissions: req.body.permissions
+            }
+        );
+
         res.json(newCookbook);
 
     } catch (err) {
@@ -39,6 +49,18 @@ router.put('/:cookbook_id', async (req, res) => {
                 },
             },
         );
+            
+        await UserCookbook.update(
+            {
+                user_id: req.body.user_id,
+                permissions: req.body.permissions
+            },
+            {
+                where: {
+                    cookbook_id: req.params.cookbook_id
+                }
+            }
+        )
 
         console.log('updated cookbook');
         res.json(updatedCookbook);
