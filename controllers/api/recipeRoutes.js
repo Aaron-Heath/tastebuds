@@ -27,8 +27,10 @@ router.post('/', async (req, res) => {
             }
         )
 
-        console.log('New Recipe Created')
-        res.json(newRecipe);
+        
+        res.json({
+            id: newRecipe.id
+        });
     } catch (err) {
         res.status(500).json(err);
     };

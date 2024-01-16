@@ -115,30 +115,12 @@ async function createRecipe(event) {
     event.preventDefault();
 
     // Get needed data
-    const ingredientsInput = document.querySelectorAll("#ingredients");
-
-    const ingredientsList = [];
-    for (let ingredient of ingredientsInput) {
-        ingredientsList.push(ingredient.value);
-    }
-
-    const directionsInput = document.querySelectorAll("#ingredients");
-
-    const directionsList = [];
-    for(let direction of directionsInput) {
-          continue      
-    
-    }
-
     const fetchBody = getData();
 
 //     // Post method for creating new recipes
     try {
         // Collects body data
-        // const fetchBody = getData();
-
-
-        const response = await fetch('/api/recipe', {
+        response = await fetch('/api/recipe', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -148,9 +130,7 @@ async function createRecipe(event) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data)
-            console.log('Successful POST request!');
-            return data;
+            window.location.href= '/app/recipe/' + data.id; 
         }
 
     } catch (err) {
@@ -172,16 +152,21 @@ const getData = () => {
 
         // const directions = formData.get('directions');
         const directionsElements = document.querySelectorAll('#directions');
-        const directions = Array.from(directionsElements).map(element => element.value);
+        const directions = Array.from(directionsElements).map((element, index) => {
+        
+            const direction = {
+                step: index + 1,
+                direction: element.value
+            }
+            return direction;
+            
+        });
 
-        // const cookbook = document.querySelector('#cookbookId');
-        // console.log(cookbook)
         const cookbook_id = parseInt(document.querySelector("#cookbook-id").value)
         console.log(cookbook_id)
 
         console.log(title)
         const fetchBody = {
-            // creator_id: creator_id,
             title: title,
             ingredients: ingredients,
             directions: directions,
@@ -195,16 +180,6 @@ const getData = () => {
         console.error('Invalid form submission:', err);
     };
 };
-
-// form.addEventListener('submit', createRecipe);
-
-function test(event) {
-    event.preventDefault();
-    const ingredientsElements = document.querySelectorAll('#ingredients');
-    for(let element of ingredientsElements) {
-        console.log(element.value);
-    }
-}
 
 form.addEventListener('submit', createRecipe)
 ingredientContainer.addEventListener('click', addRemoveIngredient);

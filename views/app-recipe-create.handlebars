@@ -29,7 +29,6 @@
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
-                        {{!-- <img class="minus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus"/> --}}
                     </div>
                 </div>
             </div>
@@ -37,35 +36,23 @@
             <div class="mb-3" id="directions-container">
                 <h3>Directions</h3>
                 <div class="row mb-3">
-                    {{!-- <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions"> --}}
                     <div class="col-10">
                         <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions">
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
-                        {{!-- <img class="minus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus"/> --}}
                     </div>
                     
                 </div>
             </div>
 
             <div class="mb-3 btn-group">
-                {{!-- <button class="form-control btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="true"
-                    aria-expanded="false" id="cookbookName" name="cookbookName" required>
-                    Choose a cookbook for your recipe!
-                </button> --}}
                 <select id="cookbook-id" class="form-select" aria-lable = "cookbook select">
                     <option selected>Select a cookbook</option>
                     {{#each cookbooks as |cookbook|}}
                     {{> cookbook-list}}
                     {{/each}}
                 </select>
-
-                {{!-- <ul class="dropdown-menu">
-                    {{#each cookbooks as |cookbook|}}
-                    {{> cookbook-list}}
-                    {{/each}}
-                </ul> --}}
             </div>
 
             <div class="mb-3 d-flex justify-content-center">
