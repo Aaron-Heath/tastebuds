@@ -23,17 +23,30 @@
 
                 <div class="mb-3">
                     <label>Description: </label>
-                    <input class="form-control description" type="text" name="description">
+                    <input class="form-control description" type="text" name="description" placeholder="Description">
                 </div>
 
-                <div class="mb-3">
-                    <label>Viewers: </label>
-                    <input class="form-control viewers" type="text" name="viewers">
+                <div class="mb-3 viewers-div">
+                    <label>Viewers:
+                        <div class="col-2 d-flex align-items-center">
+                            <img class="plus-img" onclick="addRemoveViewers" width="30" height="30"
+                                src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1" />
+                        </div>
+                    </label>
+                    <input class="form-control viewers" type="text" name="viewers" placeholder="New Viewer">
+
                 </div>
 
-                <div class="mb-3">
-                    <label>Editors: </label>
-                    <input class="form-control editors" type="text" name="editors">
+                <div class="mb-3 editors-div">
+                    <label>Editors:
+                        <div class="col-2 d-flex align-items-center">
+                            <img class="plus-img" onclick="addRemoveEditors" width="30" height="30"
+                                src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1" />
+                        </div>
+                    </label>
+                    <input class="form-control editors" type="text" name="editors" placeholder="New Editor">
+
+
                 </div>
 
                 <div class="form-check">
