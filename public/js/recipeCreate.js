@@ -145,11 +145,24 @@ const getData = () => {
         const formData = new FormData(form);
 
         const title = formData.get('title');
-        const ingredients = formData.get('ingredients');
-        const directions = formData.get('directions');
-        const cookbook = document.querySelector('#cookbookId');
-        console.log(cookbook)
-        const cookbook_id = parseInt(cookbook.dataset.cookbookId)
+
+        // const ingredients = formData.get('ingredients');
+        const ingredientsElements = document.querySelectorAll("#ingredients");
+        const ingredients = Array.from(ingredientsElements).map(element => element.value);
+
+        // const directions = formData.get('directions');
+        const directionsElements = document.querySelectorAll('#directions');
+        const directions = Array.from(directionsElements).map((element, index) => {
+        
+            const direction = {
+                step: index + 1,
+                direction: element.value
+            }
+            return direction;
+            
+        });
+
+        const cookbook_id = parseInt(document.querySelector("#cookbook-id").value)
         console.log(cookbook_id)
 
         console.log(title)
