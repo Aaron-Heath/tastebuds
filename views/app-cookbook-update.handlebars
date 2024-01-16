@@ -20,7 +20,12 @@
             </div>
 
             <div class="mb-3 viewers-div">
-                <label for="viewers">Viewers: </label>
+                <label for="viewers">Viewers:
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveViewers" width="30" height="30"
+                            src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1" />
+                    </div>
+                </label>
                 {{!-- Checks for viewer permissions before rendering --}}
                 {{#each userCookbooks as |userCookbook|}}
                 {{#if (eq userCookbook.permissions 'viewer')}}
@@ -30,7 +35,12 @@
             </div>
 
             <div class="mb-3 editors-div">
-                <label for="editors">Editors: </label>
+                <label for="editors">Editors:
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveViewers" width="30" height="30"
+                            src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1" />
+                    </div>
+                </label>
                 {{!-- Checks for editor permissions before rendering --}}
                 {{#each userCookbooks as |userCookbook|}}
                 {{#if (eq userCookbook.permissions 'editor')}}

@@ -19,15 +19,16 @@ router.post('/', async (req, res) => {
 
         // Gets the viewers and editors array
         const userCookbooksBody = req.body.userCookbookData;
-
+            console.log(userCookbooksBody)
         // Empty array for data viewing purposes
         // Not necessary for process to run
         const createdUserCookbooks = [];
 
         // Iterates through the array of users and editors, creating the appropriate UserCookbook model
         for (const each of userCookbooksBody) {
+            console.log(each)
             // Takes permission key and turns it into a string to fit UserCookbook model
-            const permission = Object.keys(each)[0].toString();
+            const permission = String(Object.keys(each));
             // Takes user_id value and turns it into an integer to fit UserCookbook model
             const user_id = parseInt(Object.values(each));
 
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
             createdUserCookbooks.push(newUserCookbook);
         };
 
-        res.json(newCookbook, createdUserCookbooks);
+        res.json(newCookbook);
 
     } catch (err) {
         res.status(500).json(err);
