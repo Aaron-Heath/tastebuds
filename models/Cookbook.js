@@ -32,12 +32,12 @@ Cookbook.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        viewers: {
-            type: DataTypes.JSON
-        },
-        editors: {
-            type: DataTypes.JSON
-        },
+        // viewers: {
+        //     type: DataTypes.JSON
+        // },
+        // editors: {
+        //     type: DataTypes.JSON
+        // },
         // recipes: {
         //     type: DataTypes.JSON
         // }

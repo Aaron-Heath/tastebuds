@@ -19,6 +19,7 @@ const createCookbook = async (event) => {
     try {
         // Collects body data
         const fetchBody = await getData();
+        console.log(fetchBody)
 
         const response = await fetch('/api/cookbook', {
             method: 'POST',
@@ -58,13 +59,24 @@ const getData = async (event) => {
             isPublic = true;
         }
 
+        // Gets viewers and editors from form and creates an array of data
+        const userCookbookData = [];
+        for (each of viewers) {
+            userCookbookData.push({'viewer': each});
+        }
+        for (each of editors) {
+            userCookbookData.push({'editor': each});
+        }
+
+        console.log(userCookbookData)
+        // Sets data to be sent back to server for POST request
         const fetchBody = {
             creator_id: creator_id,
             title: title,
             isPublic: isPublic,
             description: description,
-            viewers: viewers,
-            editors: editors
+            userCookbookData: userCookbookData
+            
         };
 
         console.log(fetchBody)

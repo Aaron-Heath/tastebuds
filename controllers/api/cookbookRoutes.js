@@ -1,30 +1,39 @@
-const { Cookbook, UserCookbook } = require('../../models');
+const { Cookbook, UserCookbook, User } = require('../../models');
 
 const router = require('express').Router();
 
 // Creating cookbooks
-router.post('/', async (req,res) => {
+router.post('/', async (req, res) => {
     // creates new cookbook
     try {
+        console.log(req.body)
         const newCookbook = await Cookbook.create
-        (
-            {
-                title: req.body.title,
-                description: req.body.description,
-                isPublic: req.body.isPublic,
-                // creator_id: req.session.user.id
-                creator_id: req.body.creator_id
-            }
-        );
+            (
+                {
+                    creator_id: req.body.creator_id,
+                    title: req.body.title,
+                    description: req.body.description,
+                    isPublic: req.body.isPublic,
+                }
+            );
 
-        // Creates new UserCookbook model to link newly created cookbook with users
-        await UserCookbook.create(
-            {
-                user_id: req.body.user_id,
-                cookbook_id: req.body.cookbook_id,
-                permissions: req.body.permissions
-            }
-        );
+        const userCookbooksBody = req.body.userCookbookData;
+        console.log('UCBB', userCookbooksBody)
+        const createdUserCookbooks = [];
+
+        for (const each of userCookbooksBody) {
+            console.log('each', each)
+
+            const permission = toString(Object.keys(each));
+            const user_id = parseInt(Object.values(each));
+
+            const newUserCookbook = await UserCookbook.create({
+                user_id: user_id,
+                cookbook_id: newCookbook.id,
+                permissions: permission
+            });
+            createdUserCookbooks.push(newUserCookbook);
+        };
 
         res.json(newCookbook);
 
@@ -38,8 +47,8 @@ router.put('/:cookbook_id', async (req, res) => {
     try {
         const updatedCookbook = await Cookbook.update(
             {
-                title:req.body.title,
-                description:req.body.description,
+                title: req.body.title,
+                description: req.body.description,
                 // creator_id: req.session.user.id
                 creator_id: req.body.creator_id
             },
@@ -49,7 +58,7 @@ router.put('/:cookbook_id', async (req, res) => {
                 },
             },
         );
-            
+
         await UserCookbook.update(
             {
                 user_id: req.body.user_id,
@@ -64,7 +73,7 @@ router.put('/:cookbook_id', async (req, res) => {
 
         console.log('updated cookbook');
         res.json(updatedCookbook);
-    }catch (err) {
+    } catch (err) {
         res.status(500).json(err);
     };
 });
@@ -81,7 +90,7 @@ router.delete('/:cookbook_id', async (req, res) => {
         );
         console.log('Cookbook deleted');
         res.json(deleteCookbook);
-    }catch (err) {
+    } catch (err) {
         res.status(500).json(err);
     };
 });
