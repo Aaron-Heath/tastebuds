@@ -1,0 +1,93 @@
+<head>
+    <link rel="stylesheet" href="/css/app-home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="app-main">
+
+    {{!-- Page Card 1 --}}
+
+    <body>
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">My Profile</h5>
+                {{!-- <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div> --}}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Username: {{user.username}}</li>
+                    <li class="list-group-item">Cookbooks Created:</li>
+                    <li class="list-group-item">Recipes Created:</li>
+                </ul>
+                {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
+            </div>
+        </div>
+        {{!-- Page Card 2 --}}
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <div class="card-container">
+                    <button type="button" class="edit"><img class="pencil" src="/assets/Images/pencil.png"></button>
+                    <h5 id="card2-title">My Cookbooks</h5>
+                    <a href="#" class="add-btn btn-primary">+</a>
+                </div>
+                <div class="list-group">
+                    {{#each cookbooks as |cookbook|}}
+                    {{> app-cookbooks}}
+                    {{/each}}
+                </div>
+
+            </div>
+        </div>
+        {{!-- Page Card 3 --}}
+        <div class="card w-75 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Shared With Me</h5>
+                <div class="list-group">
+                    {{#each sharedCookbooks as |cookbook|}}
+                    {{> app-cookbooks}}
+                    {{/each}}
+                </div>
+
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Restaurant Secrets</h5>
+                            <small>Minutes ago</small>
+                        </div>
+                        <small class="text-body-secondary">Shared By Anthony</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Cookbook Name</h5>
+                            <small class="text-body-secondary">Minutes ago</small>
+                        </div>
+                        <small class="text-body-secondary">Shared by Aaron</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">Cookbook Name</h5>
+                            <small class="text-body-secondary">Minutes ago</small>
+                        </div>
+                        <small class="text-body-secondary">Shared By Barkley</small>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+</div>
+
+<script src="/app-home.js"></script>
+</body>

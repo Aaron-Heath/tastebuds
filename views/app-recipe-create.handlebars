@@ -1,0 +1,67 @@
+<head>
+    <link rel="stylesheet" href="/css/recipe.css">
+    <link rel="stylesheet" href="/css/create-recipe.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="row d-flex justify-content-center">
+    {{!-- Recipe Creation (POST request) --}}
+    <div class="form-container col-md-4">
+        <form class="form">
+
+            <h1 class="title" data-user-id="{{creator_id}}">Create a Recipe</h1>
+            <div class= "container">
+            <div class="row">
+
+                <div class="mb-3 col-6">
+                    <h3>Title</h3>
+                    <input class="form-control" type="text" id="title" name="title" required placeholder="Title">
+                </div>
+            </div>
+
+            <div class="mb-3" id="ingredients-container">
+                <h3>Ingredients</h3>
+                <div class="row mb-3">
+                    <div class="col-10">
+                        <input class="form-control" type="text" id="ingredients" name="ingredients" required placeholder="Ingredients">
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3" id="directions-container">
+                <h3>Directions</h3>
+                <div class="row mb-3">
+                    <div class="col-10">
+                        <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions">
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="mb-3 btn-group">
+                <select id="cookbook-id" class="form-select" aria-lable = "cookbook select">
+                    <option selected>Select a cookbook</option>
+                    {{#each cookbooks as |cookbook|}}
+                    {{> cookbook-list}}
+                    {{/each}}
+                </select>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+
+        </form>
+        </div>
+        </div>
+</div>
+</body>
+<script src="../js/recipeCreate.js"></script>

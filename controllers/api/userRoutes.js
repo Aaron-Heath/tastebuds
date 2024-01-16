@@ -23,7 +23,6 @@ router.get('/activate', async (req,res) => {
 
 router.post("/signup", async (req, res) => {
   console.log("Post request heard");
-  // console.log(req.body);
   try {
     // Create user in db
     console.log("Creating user");
@@ -53,10 +52,7 @@ router.post("/signup", async (req, res) => {
     // Send verification email to user
     await mailService.sendVerificationEmail(userData);
 
-    // TODO - Redirect to login
-    res.json({
-      message: "Success!",
-    });
+    res.status(200).json({message:"user created!"});
   } catch (err) {
     res.status(400).json(err);
   }
@@ -64,12 +60,13 @@ router.post("/signup", async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
+        // Renamed email to username to properly pull data and query DB. - AH 1/10/2024 
+        const { username, password } = req.body;
 
         // Finds the user by their email
         const user = await User.findOne({
             where: {
-                email: email
+                username: username // renamed to username
             }
         });
 
@@ -86,24 +83,35 @@ router.post('/login', async (req, res) => {
 
         // Created and store a session (e.g., using a session middleware)
         req.session.save(() => {
-            req.session.user = {
-                id: user.id,
-                username: user.username,
-                email: user.email,
-            };
-            req.session.loggedIn = true;
-        });
+          req.session.user = {
+              id: user.id,
+              username: user.username,
+              email: user.email,
+          };
+          // req.session.user_id = user.id;
+          req.session.logged_in = true;
 
-
-        // Send JSON response with success message and user information
-        res.json({
+          // Send JSON response with success message and user information
+          res.json({
             message: 'Login successful',
             user: req.session.user,
+      });
+  
         });
 
     } catch (err) {
         res.status(500).json(err);
     }
 });
+
+router.post('/logout', async (req,res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  } else {
+    res.status(404).end();
+  }
+})
 
 module.exports = router;
