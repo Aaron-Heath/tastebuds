@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { User, Recipe } = require('../../models');
 const Cookbook = require('../../models/Cookbook');
 const withAuth = require('../../utils/auth');
 
@@ -15,10 +15,14 @@ const router = require('express').Router();
 
 //     const userData = await User.findByPk(req.session.user.id);
 
-//     const sharedCookbookData = await userData.getCookbooks();
-//     const sharedCookbooks = sharedCookbookData.map(sharedCookbook => sharedCookbook.get());
-//     const user = userData.get();
-//     // console.log(userData.get());
+    // const sharedCookbookData = await userData.getCookbooks();
+    // const sharedCookbooks = sharedCookbookData.map(sharedCookbook => sharedCookbook.get());
+    // const user = userData.get();
+    
+    // // add shared parameter
+    // for(let cookbook of sharedCookbooks) {
+    //     cookbook.shared = true;
+    // }
 
 //     res.render('app-home', { 
 //         cookbooks: cookbooks,
@@ -76,12 +80,17 @@ router.get('/cookbook/:cookbook_id', async (req, res) => {
         // Get user ID from the session
         const userId = req.session.user.id;
 
+        if(!req.params.shared) {
+            // TODO: Query shared cookin bookins
+        }
+
         // Retrieve the specified cookbook for the logged-in user
-        const cookbookData = await Cookbook.findOne({
+        let cookbookData = await Cookbook.findOne({
             where: {
                 id: req.params.cookbook_id,
                 creator_id: userId
-            }
+            },
+            include: Recipe
         });
 
         // Check if the cookbook exists
@@ -91,6 +100,7 @@ router.get('/cookbook/:cookbook_id', async (req, res) => {
 
         // Get the cookbook as a plain object
         const cookbook = cookbookData.get({ plain: true });
+        console.log(cookbook);
 
         // Render the page with the cookbook, user ID, and logged-in status
         res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in });
