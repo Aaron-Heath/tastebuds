@@ -68,3 +68,8 @@ const getData = async () => {
 };
 
 form.addEventListener('submit', updateCookbook);
+
+const viewersDiv = document.querySelector('.viewers-div');
+const editorsDiv = document.querySelector('.editors-div');
+const userCookbook = usernameEl.dataset.userCookbook;
+console.log(userCookbook)

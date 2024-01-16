@@ -19,17 +19,23 @@
                     placeholder="{{cookbook.description}}" value="{{cookbook.description}}">
             </div>
 
-            <div class="mb-3">
-                <label>Viewers: </label>
-                {{#each cookbook.viewers}}
-                <input class="form-control viewers" type="text" name="viewers" placeholder="{{this}}" value="{{this}}">
+            <div class="mb-3 viewers-div">
+                <label for="viewers">Viewers: </label>
+                {{!-- Checks for viewer permissions before rendering --}}
+                {{#each userCookbooks as |userCookbook|}}
+                {{#if (eq userCookbook.permissions 'viewer')}}
+                {{> viewer-editor-list}}
+                {{/if}}
                 {{/each}}
             </div>
 
-            <div class="mb-3">
-                <label>Editors: </label>
-                {{#each cookbook.editors}}
-                <input class="form-control editors" type="text" name="editors" placeholder="{{this}}" value="{{this}}">
+            <div class="mb-3 editors-div">
+                <label for="editors">Editors: </label>
+                {{!-- Checks for editor permissions before rendering --}}
+                {{#each userCookbooks as |userCookbook|}}
+                {{#if (eq userCookbook.permissions 'editor')}}
+                {{> viewer-editor-list}}
+                {{/if}}
                 {{/each}}
             </div>
 
