@@ -5,8 +5,8 @@ const usernameEl = document.querySelector('.username');
 const cookbookId = parseInt(usernameEl.dataset.cookbookId);
 console.log(cookbookId);
 
-const viewersEl = document.querySelector('.viewers-div');
-const editorsEl = document.querySelector('.editors-div');
+const viewerEl = document.querySelector('.viewers-div');
+const editorEl = document.querySelector('.editors-div');
 
 // For updating cookbooks
 const updateCookbook = async (event) => {
@@ -177,6 +177,6 @@ const addRemoveEditors = async (event) => {
     }
 }
 
-form.addEventListener('submit', createCookbook);
+form.addEventListener('submit', updateCookbook);
 editorEl.addEventListener('click', addRemoveEditors);
 viewerEl.addEventListener('click', addRemoveViewers);
