@@ -22,7 +22,7 @@ router.get('/login', async (req,res) => {
     }
 
     // else serve login page
-    res.render('login', {logged_in: req.session.logged_in});
+    res.render('login');
 });
 
 module.exports = router;
