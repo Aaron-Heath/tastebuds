@@ -1,7 +1,3 @@
-<div class="list-group">
-    {{#each cookbooks as |cookbook|}}
-    <a href="/app/cookbook/{{cookbook.id}}">
-        <button type="button" class="list-group-item list-group-item-action">{{cookbook.title}}</button>
+    <a href="/app/cookbook/{{id}}{{#if shared}}?shared=true{{/if}}">
+        <button type="button" class="list-group-item list-group-item-action">{{title}}</button>
     </a>
-    {{/each}}
-</div>

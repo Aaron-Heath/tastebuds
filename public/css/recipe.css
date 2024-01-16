@@ -1,0 +1,5 @@
+#ingredients-container img:hover,
+#directions-container img:hover {
+    cursor: pointer;
+
+}

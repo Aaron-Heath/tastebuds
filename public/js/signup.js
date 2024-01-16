@@ -65,9 +65,7 @@ async function submitForm(event) {
         formContainer.appendChild(activationPrompt);
        
         // set interval to redirect to login page after 20 seconds if user doesnt click button to redirect
-        setTimeout(() => {
-            window.location.href = '/login';
-        }), 20000; // 20 seconds
+        setTimeout(redirect, 20000);
 
 
      
@@ -78,16 +76,12 @@ async function submitForm(event) {
         loginButton.addEventListener('click', () => {
             window.location.href = '/login'; 
         });
-        formContainer.appendChild(loginButton);
-        
+        formContainer.appendChild(loginButton);     
 
+}
 
-
-
-
-
-        
-
+function redirect() {
+    window.location.href = '/login';
 }
 
 form.addEventListener('submit', submitForm);

@@ -78,6 +78,34 @@ router.get('/:id', async (req, res) => {
 
         ]
     }
+
+    const recipe = recipeData.get({plain: true});
+    console.log(recipe);
+
+
+    // const recipe = {
+    //     title: "Popcorn",
+    //     creator_id: 1,
+    //     ingredients: [
+    //         "5oz popcorn kernels",
+    //         "Heat"
+    //     ],
+    //     directions: [
+    //         {
+    //             step: 1,
+    //             direction: "Put bag in microwave."
+    //         },
+    //         {
+    //             step: 2,
+    //             direction: "Pop the corn."
+    //         },
+    //         {
+    //             step: 3,
+    //             direction: "Stop it before it burns."
+    //         },
+            
+    //     ]
+    // }
     res.render("app-recipe", { recipe });
 });
 
