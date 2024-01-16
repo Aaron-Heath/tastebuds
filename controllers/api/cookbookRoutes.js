@@ -17,14 +17,18 @@ router.post('/', async (req, res) => {
                 }
             );
 
+        // Gets the viewers and editors array
         const userCookbooksBody = req.body.userCookbookData;
-        console.log('UCBB', userCookbooksBody)
+
+        // Empty array for data viewing purposes
+        // Not necessary for process to run
         const createdUserCookbooks = [];
 
+        // Iterates through the array of users and editors, creating the appropriate UserCookbook model
         for (const each of userCookbooksBody) {
-            console.log('each', each)
-
-            const permission = toString(Object.keys(each));
+            // Takes permission key and turns it into a string to fit UserCookbook model
+            const permission = Object.keys(each)[0].toString();
+            // Takes user_id value and turns it into an integer to fit UserCookbook model
             const user_id = parseInt(Object.values(each));
 
             const newUserCookbook = await UserCookbook.create({
@@ -35,7 +39,7 @@ router.post('/', async (req, res) => {
             createdUserCookbooks.push(newUserCookbook);
         };
 
-        res.json(newCookbook);
+        res.json(newCookbook, createdUserCookbooks);
 
     } catch (err) {
         res.status(500).json(err);
@@ -49,7 +53,6 @@ router.put('/:cookbook_id', async (req, res) => {
             {
                 title: req.body.title,
                 description: req.body.description,
-                // creator_id: req.session.user.id
                 creator_id: req.body.creator_id
             },
             {
