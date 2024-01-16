@@ -6,6 +6,8 @@ console.log(usernameEl)
 const creator_id = parseInt(usernameEl.dataset.userId)
 console.log(creator_id)
 
+const editorEl = document.querySelector('.editors-div');
+const viewerEl = document.querySelector('.viewers-div');
 
 // For creating new recipes
 const createCookbook = async (event) => {
@@ -73,32 +75,106 @@ const getData = async (event) => {
     };
 };
 
+// For adding/removing viewers
+function addRemoveViewers(event) {
+    if(!event.target.matches("img")) {
+        return;
+    }
 
-// const editorInput = document.querySelector('.editors');
-// const viewerInput = document.querySelector('.viewers');
-// const editorDiv = document.querySelector('.editors-div');
-// const viewerDiv = document.querySelector('.viewers-div');
+    const buttonClass = event.target.className;
 
-// const addEditor = document.querySelector('.add-editors-btn');
-// const addViewer = document.querySelector('.add-viewers-btn');
-// const removeEditor = document.querySelector('.remove-editors-btn');
-// const removeViewer = document.querySelector('.remove-viewers-btn');
+    
+    if(buttonClass === "plus-img") {
 
-// addEditor.addEventListener('click', async (event) => {
-//     const newEditor = editorInput.cloneNode(true);
-//     editorDiv.appendChild(newEditor);
+        // Create and append new div
+        const inputRow = document.createElement('div');
+        inputRow.className='row mb-3';
 
-// });
+        const textDiv = document.createElement("div");
+        textDiv.className = "col-10";
 
-// addViewer.addEventListener('click', async (event) => {
-//     event.stopImmediatePropagation
+        const textInput = document.createElement('input');
+        textInput.className="form-control viewers";
+        textInput.type = "text";
+        textInput.id='viewers'
+        textInput.name = "viewers"
+        textInput.placeholder = "New Viewer"
+        textInput.required = true;
 
-//     const newViewer = viewerInput.cloneNode(true);
-//     viewerDiv.appendChild(newViewer);
-// })
+        textDiv.appendChild(textInput);
 
-// removeEditor.addEventListener('click', async (event) => {
-//     editorDiv.removeChild(lastElementChild);
-// })
+        inputRow.appendChild(textDiv);
+
+        // Create and append new images
+        const imgDiv = document.createElement("div");
+        imgDiv.className="col-2 d-flex align-items-center justify-content-center";
+        imgDiv.innerHTML=(`
+        <img class="plus-img"  width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+        <img class="minus-img"  width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus"/>
+        `);
+
+        inputRow.appendChild(imgDiv);
+
+        viewerEl.appendChild(inputRow);
+
+
+
+    } else if (buttonClass === "minus-img") {
+        // delete parent element from dom
+        event.target.parentElement.parentElement.remove();
+    }
+}
+
+// For adding/removing editors
+function addRemoveEditors(event) {
+    if(!event.target.matches("img")) {
+        return;
+    }
+
+    const buttonClass = event.target.className;
+
+    
+    if(buttonClass === "plus-img") {
+
+        // Create and append new div
+        const inputRow = document.createElement('div');
+        inputRow.className='row mb-3';
+
+        const textDiv = document.createElement("div");
+        textDiv.className = "col-10";
+
+        const textInput = document.createElement('input');
+        textInput.className="form-control editors";
+        textInput.type = "text";
+        textInput.id='editors'
+        textInput.name = "editors"
+        textInput.placeholder = "New Editor"
+        textInput.required = true;
+
+        textDiv.appendChild(textInput);
+
+        inputRow.appendChild(textDiv);
+
+        // Create and append new images
+        const imgDiv = document.createElement("div");
+        imgDiv.className="col-2 d-flex align-items-center justify-content-center";
+        imgDiv.innerHTML=(`
+        <img class="plus-img"  width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+        <img class="minus-img"  width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus"/>
+        `);
+
+        inputRow.appendChild(imgDiv);
+
+        editorEl.appendChild(inputRow);
+
+
+
+    } else if (buttonClass === "minus-img") {
+        // delete parent element from dom
+        event.target.parentElement.parentElement.remove();
+    }
+}
 
 form.addEventListener('submit', createCookbook);
+editorEl.addEventListener('click', addRemoveEditors);
+viewerEl.addEventListener('click', addRemoveViewers);

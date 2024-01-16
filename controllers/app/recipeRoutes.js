@@ -79,7 +79,7 @@ router.get('/:id', async (req, res) => {
         ]
     }
 
-    const recipe = recipeData.get({plain: true});
+    recipeData.get({plain: true});
     console.log(recipe);
 
 
