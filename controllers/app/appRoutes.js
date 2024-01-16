@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { User, Recipe } = require('../../models');
 const Cookbook = require('../../models/Cookbook');
 const withAuth = require('../../utils/auth');
 
@@ -18,7 +18,11 @@ router.get('/', async (req,res) => {
     const sharedCookbookData = await userData.getCookbooks();
     const sharedCookbooks = sharedCookbookData.map(sharedCookbook => sharedCookbook.get());
     const user = userData.get();
-    // console.log(userData.get());
+    
+    // add shared parameter
+    for(let cookbook of sharedCookbooks) {
+        cookbook.shared = true;
+    }
 
     res.render('app-home', { 
         cookbooks: cookbooks,
@@ -27,34 +31,6 @@ router.get('/', async (req,res) => {
         logged_in: req.session.logged_in });
 });
 
-router.get('/cookbook/:cookbook_id', async (req, res) => {
-    try {
-        // Get user ID from the session
-        const userId = req.session.user.id;
-
-        // Retrieve the specified cookbook for the logged-in user
-        const cookbookData = await Cookbook.findOne({
-            where: {
-                id: req.params.cookbook_id,
-                creator_id: userId
-            }
-        });
-
-        // Check if the cookbook exists
-        if (!cookbookData) {
-            return res.status(404).render('404', { logged_in: req.session.logged_in });
-        }
-
-        // Get the cookbook as a plain object
-        const cookbook = cookbookData.get({ plain: true });
-
-        // Render the page with the cookbook, user ID, and logged-in status
-        res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in });
-    } catch (error) {
-        console.error('Error:', error.message);
-        res.status(500).json({ error: 'Failed to retrieve data' });
-    }
-});
 
 router.get('/public', (req, res) => {
     res.render('app-public', { logged_in: req.session.logged_in });

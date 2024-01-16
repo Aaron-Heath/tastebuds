@@ -5,6 +5,7 @@ const { Recipe, CookbookRecipe } = require('../../models');
 // For creating new recipes
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body);
         // Creates new recipe
         const newRecipe = await Recipe.create(
             {
@@ -26,8 +27,10 @@ router.post('/', async (req, res) => {
             }
         )
 
-        console.log('New Recipe Created')
-        res.json(newRecipe);
+        
+        res.json({
+            id: newRecipe.id
+        });
     } catch (err) {
         res.status(500).json(err);
     };

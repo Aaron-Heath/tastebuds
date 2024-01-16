@@ -49,29 +49,14 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req,res) => {
     // Temporary Recipe for data purposes
-    const recipe = {
-        title: "Popcorn",
-        creator_id: 1,
-        ingredients: [
-            "5oz popcorn kernels",
-            "Heat"
-        ],
-        directions: [
-            {
-                step: 1,
-                direction: "Put bag in microwave."
-            },
-            {
-                step: 2,
-                direction: "Pop the corn."
-            },
-            {
-                step: 3,
-                direction: "Stop it before it burns."
-            },
-            
-        ]
+    console.log("got a request")
+    const recipeData = await Recipe.findByPk(req.params.id);
+
+    if(!recipeData) {
+        res.sendStatus(404);
     }
+
+    const recipe = recipeData.get({plain: true});
     res.render("app-recipe", { recipe });
 });
 
@@ -83,7 +68,8 @@ router.get('/update/:id', async (req, res) => {
         const recipe = dbRecipeData.get({ plain: true });
         console.log(recipe)
 
-        res.render('app-recipe-update', { recipe });
+        res.render('app-recipe-update', { recipe: recipe,
+            logged_in: req.session.logged_in });
 
     } catch (err) {
         console.error(err);
