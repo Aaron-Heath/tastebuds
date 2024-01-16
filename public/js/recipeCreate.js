@@ -1,7 +1,8 @@
 const form = document.querySelector('.form');
 
 // Retrieves id from username element to be used in creating new recipe
-const usernameEl = document.querySelector('.username');
+const usernameEl = document.querySelector('.title');
+console.log(usernameEl)
 const creator_id = parseInt(usernameEl.dataset.userId)
 console.log(creator_id)
 
@@ -46,7 +47,7 @@ const getData = () => {
         const title = formData.get('title');
         const ingredients = formData.get('ingredients');
         const directions = formData.get('directions');
-        const cookbook = document.querySelector('#cookbookId');
+        const cookbook = document.querySelector('.cookbookId');
         console.log(cookbook)
         const cookbook_id = parseInt(cookbook.dataset.cookbookId)
         console.log(cookbook_id)

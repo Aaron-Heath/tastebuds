@@ -40,7 +40,7 @@ const createCookbook = async (event) => {
 
 
 // For collecting body data for POST requests
-const getData = async () => {
+const getData = async (event) => {
     try {
         const formData = new FormData(form);
 
@@ -72,5 +72,33 @@ const getData = async () => {
         console.error('Invalid form submission:', err);
     };
 };
+
+
+// const editorInput = document.querySelector('.editors');
+// const viewerInput = document.querySelector('.viewers');
+// const editorDiv = document.querySelector('.editors-div');
+// const viewerDiv = document.querySelector('.viewers-div');
+
+// const addEditor = document.querySelector('.add-editors-btn');
+// const addViewer = document.querySelector('.add-viewers-btn');
+// const removeEditor = document.querySelector('.remove-editors-btn');
+// const removeViewer = document.querySelector('.remove-viewers-btn');
+
+// addEditor.addEventListener('click', async (event) => {
+//     const newEditor = editorInput.cloneNode(true);
+//     editorDiv.appendChild(newEditor);
+
+// });
+
+// addViewer.addEventListener('click', async (event) => {
+//     event.stopImmediatePropagation
+
+//     const newViewer = viewerInput.cloneNode(true);
+//     viewerDiv.appendChild(newViewer);
+// })
+
+// removeEditor.addEventListener('click', async (event) => {
+//     editorDiv.removeChild(lastElementChild);
+// })
 
 form.addEventListener('submit', createCookbook);
