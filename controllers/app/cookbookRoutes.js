@@ -31,12 +31,14 @@ router.get('/:cookbook_id', async (req, res) => {
                 id: req.params.cookbook_id,
                 creator_id: userId
             },
-            include: {
+            include: [{
                 model: Recipe,
                 include: {
-                    model: User
+                    model: User,
                 }
-            }
+            },
+            'creator'
+        ]
 
             // include: User
         });

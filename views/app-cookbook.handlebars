@@ -1,26 +1,55 @@
 <link rel="stylesheet" href="/css/app-home.css">
 <div class="app-main">
-    <h3>Cookbook: {{ title }}</h3>
-<div class="card w-75 mb-3">
-            <div class="card-body">
-                <div class="card-container">
-                    <h5 id="card2-title">Recipes</h5>
-                    <a href="../recipe" class="add-btn btn-primary">+</a>
-                </div>
-                <div class="list-group">
-                    {{#each recipes as |recipe|}}
-                    <a href="../recipe/{{recipe.id}}">
-                        {{!-- <button type="button" class="list-group-item list-group-item-action">{{recipe.title}}</button> --}}
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{recipe.title}}</h5>
-                            {{!-- <small class="text-body-secondary">Creator: {{ recipe.creator }}</small> --}}
-                        </div>
-                        <small class="text-body-secondary">Creator: {{ recipe.user.username }}</small>
-                        </a>
-                    </a>
-                    {{/each}}
+    {{!-- <h3>Cookbook: {{ title }}</h3> --}}
+    <div class="card w-75 mb-3">
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        {{!-- <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div> --}}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Creator: {{creator.username}} </li>
+            <li class="list-group-item">Recipes: </li>
+            <li class="list-group-item">Shared Users: </li>
+            <li class="list-group-item">
+                {{#if isPublic }}
+                    <i>Public to all users</i>
+                {{else}}
+                    <i>Private to shared users</i>
+                {{/if}}
+            </li>
+        </ul>
+        {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
+    </div>
+    </div>
+    <div class="card w-75 mb-3">
+                <div class="card-body">
+                    <div class="card-container">
+                        <h5 id="card2-title">Recipes</h5>
+                        <a href="../recipe" class="add-btn btn-primary">+</a>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        {{#each recipes as |recipe|}}
+                        <li class="list-group-item">
+                            <a href="../recipe/{{recipe.id}}">
+                                {{!-- <button type="button" class="list-group-item list-group-item-action">{{recipe.title}}</button> --}}
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{recipe.title}}</h5>
+                                    {{!-- <small class="text-body-secondary">Creator: {{ recipe.creator }}</small> --}}
+                                </div>
+                                <small class="text-body-secondary">Creator: {{ recipe.user.username }}</small>
+                            </a>
+                        </li>
+                        {{/each}}
+                    </div>
                 </div>
             </div>
-        </div>
-    
 </div>
