@@ -40,10 +40,6 @@ body {
     font-family: 'Hind Siliguri', sans-serif;
 }
 
-.placeholder-img{
-    width:100%;
-    height:100%;
-}
 
 .card-container{
     display: flex;
@@ -54,7 +50,7 @@ body {
 .card-title{
     text-align: center;
     justify-content:center;
-    align-items: center;
+    /* align-items: center; */
     font-family: 'Hind Siliguri', sans-serif;
     font-size: 20px;
     color: var(--drkgrn);
@@ -74,6 +70,10 @@ body {
     width:25px;
     margin: auto;
     align-self: auto;
+}
+
+img { 
+    float:right;
 }
 
 .edit{

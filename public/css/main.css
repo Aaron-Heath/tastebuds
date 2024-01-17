@@ -17,6 +17,7 @@
     color: #ff523b;
     font-family: 'Chewy', system-ui;
     font-size: 23px;
+    text-shadow: 2px 2px 2px white;
 }
 
 body {
@@ -27,7 +28,7 @@ a {
 }
 
 .navbar{
-    background-color: #679289;
+    background-color: #aecdc9;
 }
 .nav-link{
     font-family: 'Hind Siliguri', sans-serif;
