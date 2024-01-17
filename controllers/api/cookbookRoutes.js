@@ -35,6 +35,7 @@ router.post('/', async (req, res) => {
             const user_id = parseInt(Object.values(each));
             console.log(user_id)
 
+            // Checks for empty fields
             if (isNaN(user_id)) {
                 return;
             }
