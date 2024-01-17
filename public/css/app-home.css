@@ -12,6 +12,10 @@
     font-family: 'Chewy', system-ui;
 } */
 
+h5 {
+    display: inline-block;
+}
+
 .offcanvas-title {
     color:#071E22;
     font-family: 'Hind Siliguri', sans-serif;
@@ -26,15 +30,14 @@ body {
     margin-right: 15%;
 }
 
-small{
-    font-family: 'Red Hat Display', sans-serif;
+.list-group-item{
+    text-align: left;
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
 }
 
-
-.list-group{
-    text-align: left;
-    font-family: 'Red Hat Display', sans-serif;
-
+.list-body-secondary{
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 .placeholder-img{
@@ -83,19 +86,19 @@ small{
     padding: 0px;
 }
 
-li {
-    font-family: 'Red Hat Display', sans-serif;
-
-    font-size: 15px;
-}
 .nav-item {
     font-family:'Hind Siliguri', sans-serif;
 }
 
 /* shared cookbook titles */
 .mb-1{
-    font-family: 'Red Hat Display', sans-serif;
-    font-size: 15px;
+    font-family: 'Dosis', sans-serif;
+    font-size: 18px;
+}
+
+li{
+    font-family: 'Dosis', sans-serif;
+    font-size: 17px;
 }
 
 #offcanvasNavbarLabel{
@@ -110,4 +113,8 @@ li {
     justify-content:space-evenly;
     align-items: center;
     font-family: 'Hind Siliguri', sans-serif;
+}
+
+#settings-card {
+    display:none;
 }

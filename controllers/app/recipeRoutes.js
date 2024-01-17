@@ -57,7 +57,8 @@ router.get('/:id', async (req,res) => {
     }
 
     const recipe = recipeData.get({plain: true});
-    res.render("app-recipe", { recipe });
+    res.render("app-recipe", { recipe,
+        logged_in: req.session.logged_in });
 });
 
 // The /app/recipe/update/:id endpoint for looking at specific recipes
