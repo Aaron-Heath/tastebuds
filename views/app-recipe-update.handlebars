@@ -1,5 +1,4 @@
 <head>
-    <link rel="stylesheet" href="/css/recipe.css">
     <link rel="stylesheet" href="/css/create-recipe.css">
     <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
@@ -11,13 +10,16 @@
     <div class="form-container col-md-4">
         <form class="form">
 
-            <h1 class="title" data-user-id="{{creator_id}}">Update a Recipe</h1>
+            <h1 class="title" data-user-id="{{creator_id}}">Update Recipe</h1>
             <div class= "container">
             <div class="row">
 
                 <div class="mb-3 col-6">
                     <h3>Title</h3>
                     <input class="form-control" type="text" id="title" name="title" required placeholder="Title">
+                    {{!-- {{#each recipe.titles |title|}}
+                     <input class="form-control" type="text" id="title" name="title" required value={{title.text}}>
+                     {{/each}} --}}
                 </div>
             </div>
 
@@ -25,8 +27,7 @@
                 <h3>Ingredients</h3>
                 <div class="row mb-3">
                     <div class="col-10">
-                        <input class="form-control" type="text" id="ingredients" name="ingredients" required placeholder="Ingredients">
-                     {{#each ingredients as |ingredient|}} 
+                     {{#each recipe.ingredients as |ingredient|}} 
                        <input class="form-control" type="text" id="ingredients" name="ingredients" required value={{ingredient}}>  
                      {{!-- {{ingredient}} --}}
                      {{/each}}
@@ -41,9 +42,8 @@
                 <h3>Directions</h3>
                 <div class="row mb-3">
                     <div class="col-10">
-                        <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions">
-                        {{#each directions as |direction|}}
-                         <input class="form-control" type="text" id="directions" name="directions" required value={{Direction}}>
+                        {{#each recipe.directions as |direction|}}
+                         <input class="form-control" type="text" id="directions" name="directions" required value= {{direction.text}}>
                         {{/each}}
                     </div>
                     <div class="col-2 d-flex align-items-center">
@@ -53,14 +53,14 @@
                 </div>
             </div>
 
-            <div class="mb-3 btn-group">
+            {{!-- <div class="mb-3 btn-group">
                 <select id="cookbook-id" class="form-select" aria-lable = "cookbook select">
                     <option selected>Select a cookbook</option>
                     {{#each cookbooks as |cookbook|}}
                     {{> cookbook-list}}
                     {{/each}}
                 </select>
-            </div>
+            </div> --}}
 
             <div class="mb-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
