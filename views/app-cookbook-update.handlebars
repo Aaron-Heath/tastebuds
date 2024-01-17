@@ -20,20 +20,6 @@
             </div>
 
             <div class="mb-3">
-                <label>Viewers: </label>
-                {{#each cookbook.viewers}}
-                <input class="form-control viewers" type="text" name="viewers" placeholder="{{this}}" value="{{this}}">
-                {{/each}}
-            </div>
-
-            <div class="mb-3">
-                <label>Editors: </label>
-                {{#each cookbook.editors}}
-                <input class="form-control editors" type="text" name="editors" placeholder="{{this}}" value="{{this}}">
-                {{/each}}
-            </div>
-
-            <div class="mb-3">
                 <input type="checkbox" class="btn-check" id="isPublic" autocomplete="off"
                     data-is-public="{{cookbook.isPublic}}">
                 <label class="btn btn-outline-primary" for="isPublic">Check this box to make your cookbook
