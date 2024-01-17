@@ -80,4 +80,18 @@ router.get('/update/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
+router.put('/update/:id', async (req, res) => {
+    try {
+        const updatedRecipe = await Recipe.update(req.body, {
+            where: { 
+                id: req.params.id,
+            }
+        })
+        if(updatedRecipe) {
+            res.status(200).end()
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+})
 module.exports = router;
