@@ -2,38 +2,32 @@
 <div class="app-main">
     {{!-- <h3>Cookbook: {{ title }}</h3> --}}
     <div class="card w-75 mb-3">
-    <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        {{!-- <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Dropdown button
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5> <img width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Creator: {{creator.username}} </li>
+                <li class="list-group-item">Recipes: </li>
+                {{!-- <li class="list-group-item">Shared Users: </li> --}}
+                <li class="list-group-item">
+                </li>
             </ul>
-        </div> --}}
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Creator: {{creator.username}} </li>
-            <li class="list-group-item">Recipes: </li>
-            <li class="list-group-item">Shared Users: </li>
-            <li class="list-group-item">
-                {{#if isPublic }}
-                    <i>Public to all users</i>
-                {{else}}
-                    <i>Private to shared users</i>
-                {{/if}}
-            </li>
-        </ul>
-        {{!-- <a href="#" class="btn btn-primary">Button</a> --}}
+        </div>
     </div>
+        <div class="card w-75 mb-3" id="settings-card">
+        <h5 class="card-title card-body">Settings</h5>
+        <div class="card-body">
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Private: <input disabled type="checkbox" {{#unless isPublic}}checked {{/unless}}></li>
+                <li class="list-group-item">Add Editor: <input disabled type="text"><a href="../recipe" id="add-editor" class="add-btn btn-primary">+</a></li> 
+                <li class="list-group-item">Add Viewer: <input disabled type="text"><a href="../recipe" id="add-viewer" class="add-btn btn-primary">+</a></li>
+                <li class="list-group-item"><button class="btn btn-danger" id="delete-cookbook">Delete Cookbook</button></li>
+        </div>
     </div>
     <div class="card w-75 mb-3">
                 <div class="card-body">
                     <div class="card-container">
-                        <h5 id="card2-title">Recipes</h5>
+                        <h5 id="card2-title">Recipes </h5>
                         <a href="../recipe" class="add-btn btn-primary">+</a>
                     </div>
                     <div class="list-group list-group-flush">
