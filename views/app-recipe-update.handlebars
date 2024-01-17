@@ -16,38 +16,44 @@
 
                 <div class="mb-3 col-6">
                     <h3>Title</h3>
-                    <input class="form-control"  type="text" id="title" data-id="{{id}}" name="title" required value="{{recipe.title}}">
+                    <input class="form-control"  type="text" id="title" data-id="{{recipe.id}}" name="title" required value="{{recipe.title}}">
                 </div>
             </div>
 
             <div class="mb-3" id="ingredients-container">
                 <h3>Ingredients</h3>
+                {{#each recipe.ingredients as |ingredient|}} 
                 <div class="row mb-3">
-                    <div class="col-10">
-                     {{#each recipe.ingredients as |ingredient|}} 
-                       <input class="form-control" type="text" id="ingredients" name="ingredients" required value= "{{ingredient}}">  
-                     {{!-- {{ingredient}} --}}
-                     {{/each}}
+                         <div class="col-10">
+                            <input class="form-control" type="text" id="ingredients" name="ingredients" required value= "{{ingredient}}"> 
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
-                    </div>
+                        {{#if @index}}
+                        <img class="minus-img" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus">
+                        {{/if}}
+                    </div> 
                 </div>
+                {{/each}}
             </div>
 
             <div class="mb-3" id="directions-container">
                 <h3>Directions</h3>
+                {{#each recipe.directions as |direction|}}
                 <div class="row mb-3">
                     <div class="col-10">
-                        {{#each recipe.directions as |direction|}}
-                         <input class="form-control" type="text" id="directions" name="directions" required value= "{{direction.direction}}">
-                        {{/each}}
+                        <input class="form-control" type="text" id="directions" name="directions" required value= "{{direction.direction}}">
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                        {{#if @index}}
+                        <img class="minus-img" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus">
+                        {{/if}}
+
                     </div>
                     
                 </div>
+                {{/each}}
             </div>
 
             {{!-- <div class="mb-3 btn-group">
@@ -68,4 +74,4 @@
         </div>
 </div>
 </body>
-<script src="../../../js/recipeUpdate.js"></script>
+<script src="/js/recipeUpdate.js"></script>

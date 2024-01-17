@@ -124,7 +124,7 @@ async function updateRecipe(event) {
         //Collects body data
         const fetchBody = await getData(form);
         let recipeId = document.querySelector('#title').getAttribute('data-id');
-        const response = await fetch(`/app/recipe/${recipeId}`, {
+        const response = await fetch(`/api/recipe/${recipeId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -149,8 +149,22 @@ const getData = () => {
         const formData = new FormData(form);
 
         const title = formData.get('title');
-        const ingredients = formData.getAll('ingredients');
-        const directions = formData.getAll('directions');
+        // const ingredients = formData.getAll('ingredients');
+        // const directions = formData.getAll('directions');
+        const ingredientsElements = document.querySelectorAll("#ingredients");
+        const ingredients = Array.from(ingredientsElements).map(element => element.value);
+
+        // const directions = formData.get('directions');
+        const directionsElements = document.querySelectorAll('#directions');
+        const directions = Array.from(directionsElements).map((element, index) => {
+        
+            const direction = {
+                step: index + 1,
+                direction: element.value
+            }
+            return direction;
+            
+        });
 
         console.log(title)
         const fetchBody = {
