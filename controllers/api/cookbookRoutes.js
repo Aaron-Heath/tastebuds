@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
 
         // Gets the viewers and editors array
         const userCookbooksBody = req.body.userCookbookData;
-            console.log(userCookbooksBody)
+        console.log(userCookbooksBody)
         // Empty array for data viewing purposes
         // Not necessary for process to run
         const createdUserCookbooks = [];
@@ -73,7 +73,48 @@ router.put('/:cookbook_id', async (req, res) => {
                     cookbook_id: req.params.cookbook_id
                 }
             }
-        )
+        );
+
+        const userCookbooksBody = req.body.userCookbookData
+
+        for (const each of userCookbooksBody) {
+
+            // Takes permission key and turns it into a string to fit UserCookbook model
+            const permission = String(Object.keys(each));
+            // Takes user_id value and turns it into an integer to fit UserCookbook model
+            const user_id = parseInt(Object.values(each));
+
+            // Checks for preexisting UserCookbook model
+            const existingUserCookbook = await UserCookbook.findOne({
+                where: {
+                    user_id: user_id,
+                    cookbook_id: req.params.cookbook_id
+                }
+            });
+
+            // Updates UserCookbook model if exists
+            if (existingUserCookbook) {
+                await UserCookbook.update(
+                    {
+                        permissions: permission,
+                    },
+                    {
+                        where: {
+                            user_id: user_id
+                        }
+                    }
+                    // Creates new UserCookbook model is no previous existing one
+                )
+            } else {
+               await UserCookbook.create({
+                    user_id: user_id,
+                    cookbook_id: req.params.cookbook_id,
+                    permissions: permission
+                })
+            };
+        }
+
+
 
         console.log('updated cookbook');
         res.json(updatedCookbook);
