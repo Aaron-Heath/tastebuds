@@ -11,7 +11,7 @@
     <div class="form-container col-md-4">
         <form class="form">
 
-            <h1 class="title" data-user-id="{{creator_id}}">Create a Recipe</h1>
+            <h1 class="title" data-user-id="{{creator_id}}">Update a Recipe</h1>
             <div class= "container">
             <div class="row">
 
@@ -26,6 +26,10 @@
                 <div class="row mb-3">
                     <div class="col-10">
                         <input class="form-control" type="text" id="ingredients" name="ingredients" required placeholder="Ingredients">
+                     {{#each ingredients as |ingredient|}} 
+                       <input class="form-control" type="text" id="ingredients" name="ingredients" required value={{ingredient}}>  
+                     {{!-- {{ingredient}} --}}
+                     {{/each}}
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
@@ -38,6 +42,9 @@
                 <div class="row mb-3">
                     <div class="col-10">
                         <input class="form-control" type="text" id="directions" name="directions" required placeholder="Directions">
+                        {{#each directions as |direction|}}
+                         <input class="form-control" type="text" id="directions" name="directions" required value={{Direction}}>
+                        {{/each}}
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
