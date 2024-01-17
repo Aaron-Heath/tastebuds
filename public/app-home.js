@@ -28,8 +28,8 @@
 
     // Function for add button click
     function handleAddButtonClick() {
-        // this will url for creating cookbook page
-        const newPageURL = '/app/cookbook'; // path to create cookbook page here
+        //  cookbook page
+        const newPageURL = '/app/cookbook'; 
 
         // Navigate to the new page
         window.location.href = newPageURL;

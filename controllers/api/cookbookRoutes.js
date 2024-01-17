@@ -19,15 +19,16 @@ router.post('/', async (req, res) => {
 
         // Gets the viewers and editors array
         const userCookbooksBody = req.body.userCookbookData;
-
+        console.log(userCookbooksBody)
         // Empty array for data viewing purposes
         // Not necessary for process to run
         const createdUserCookbooks = [];
 
         // Iterates through the array of users and editors, creating the appropriate UserCookbook model
         for (const each of userCookbooksBody) {
+            console.log(each)
             // Takes permission key and turns it into a string to fit UserCookbook model
-            const permission = Object.keys(each)[0].toString();
+            const permission = String(Object.keys(each));
             // Takes user_id value and turns it into an integer to fit UserCookbook model
             const user_id = parseInt(Object.values(each));
 
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
             createdUserCookbooks.push(newUserCookbook);
         };
 
-        res.json(newCookbook, createdUserCookbooks);
+        res.json(newCookbook);
 
     } catch (err) {
         res.status(500).json(err);
@@ -62,17 +63,58 @@ router.put('/:cookbook_id', async (req, res) => {
             },
         );
 
-        await UserCookbook.update(
-            {
-                user_id: req.body.user_id,
-                permissions: req.body.permissions
-            },
-            {
-                where: {
-                    cookbook_id: req.params.cookbook_id
-                }
-            }
-        )
+        // await UserCookbook.update(
+        //     {
+        //         user_id: req.body.user_id,
+        //         permissions: req.body.permissions
+        //     },
+        //     {
+        //         where: {
+        //             cookbook_id: req.params.cookbook_id
+        //         }
+        //     }
+        // );
+
+        // const userCookbooksBody = req.body.userCookbookData
+
+        // for (const each of userCookbooksBody) {
+
+        //     // Takes permission key and turns it into a string to fit UserCookbook model
+        //     const permission = String(Object.keys(each));
+        //     // Takes user_id value and turns it into an integer to fit UserCookbook model
+        //     const user_id = parseInt(Object.values(each));
+
+        //     // Checks for preexisting UserCookbook model
+        //     const existingUserCookbook = UserCookbook.findOne({
+        //         where: {
+        //             user_id: user_id,
+        //             cookbook_id: req.params.cookbook_id
+        //         }
+        //     })
+
+        //     // // Updates UserCookbook model if exists
+        //     if (existingUserCookbook) {
+        //         await UserCookbook.update(
+        //             {
+        //                 permissions: permission,
+        //             },
+        //             {
+        //                 where: {
+        //                     user_id: user_id
+        //                 }
+        //             }
+        //             // Creates new UserCookbook model is no previous existing one
+        //         )
+        //     } else {
+        //         await UserCookbook.create({
+        //             user_id: user_id,
+        //             cookbook_id: req.params.cookbook_id,
+        //             permissions: permission
+        //         })
+        //     }
+        // }
+
+
 
         console.log('updated cookbook');
         res.json(updatedCookbook);
