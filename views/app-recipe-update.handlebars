@@ -1,37 +1,77 @@
+<head>
+    <link rel="stylesheet" href="/css/create-recipe.css">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display&display=swap" rel="stylesheet">
+</head>
+
+<body>
 <div class="row d-flex justify-content-center">
-    {{!-- Recipe Update (PUT request) --}}
+    {{!-- Recipe Creation (POST request) --}}
     <div class="form-container col-md-4">
         <form class="form">
 
-            <h1 class="username" data-user-id="{{creator_id}}" data-recipe-id="{{recipe.id}}">Update a Recipe</h1>
+            <h1 class="title" data-user-id="{{creator_id}}">Update Recipe</h1>
+            <div class= "container">
             <div class="row">
 
                 <div class="mb-3 col-6">
-                    <input class="form-control" type="text" id="title" name="title"
-                        placeholder="{{recipe.title}}" value="{{recipe.title}}">
+                    <h3>Title</h3>
+                    <input class="form-control"  type="text" id="title" data-id="{{recipe.id}}" name="title" required value="{{recipe.title}}">
                 </div>
             </div>
 
-            <div class="mb-3">
-                {{#each recipe.ingredients}}
-                <input class="form-control ingredients" type="text" name="ingredients"
-                    placeholder="{{this}}" value="{{this}}">
+            <div class="mb-3" id="ingredients-container">
+                <h3>Ingredients</h3>
+                {{#each recipe.ingredients as |ingredient|}} 
+                <div class="row mb-3">
+                         <div class="col-10">
+                            <input class="form-control" type="text" id="ingredients" name="ingredients" required value= "{{ingredient}}"> 
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                        {{#if @index}}
+                        <img class="minus-img" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus">
+                        {{/if}}
+                    </div> 
+                </div>
                 {{/each}}
             </div>
 
-            <div class="mb-3">
-                {{#each recipe.directions}}
-                <input class="form-control directions" type="text" name="directions"
-                    placeholder="{{this}}" value="{{this}}">
+            <div class="mb-3" id="directions-container">
+                <h3>Directions</h3>
+                {{#each recipe.directions as |direction|}}
+                <div class="row mb-3">
+                    <div class="col-10">
+                        <input class="form-control" type="text" id="directions" name="directions" required value= "{{direction.direction}}">
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <img class="plus-img" onclick="addRemoveIngredient" width="30" height="30" src="https://img.icons8.com/color/48/plus--v1.png" alt="plus--v1"/>
+                        {{#if @index}}
+                        <img class="minus-img" width="30" height="30" src="https://img.icons8.com/color/48/minus.png" alt="minus">
+                        {{/if}}
+
+                    </div>
+                    
+                </div>
                 {{/each}}
             </div>
 
+            {{!-- <div class="mb-3 btn-group">
+                <select id="cookbook-id" class="form-select" aria-lable = "cookbook select">
+                    <option selected>Select a cookbook</option>
+                    {{#each cookbooks as |cookbook|}}
+                    {{> cookbook-list}}
+                    {{/each}}
+                </select>
+            </div> --}}
 
             <div class="mb-3 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
 
         </form>
-    </div>
+        </div>
+        </div>
 </div>
-<script src="../../../js/recipeUpdate.js"></script>
+</body>
+<script src="/js/recipeUpdate.js"></script>
