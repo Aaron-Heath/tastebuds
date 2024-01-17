@@ -16,7 +16,11 @@
 }
 
 body{
-    background-color:var(--linen);
+    /* background-color: var(--linen); */
+    background-image: url(/assets/Images/paperbckgrnd.png);
+    background-size: contain;
+    background-attachment: fixed;
+    background-position-x: 100vh;
 }
 
 .form-control{

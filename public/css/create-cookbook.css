@@ -7,8 +7,12 @@
     --linen: #EFE6DD;
 }
 
-*{
-    background-color: var(--linen);
+body{
+    /* background-color: var(--linen); */
+    background-image: url(/assets/Images/paperbckgrnd.png);
+    background-size: contain;
+    background-attachment: fixed;
+    background-position-x: 100vh;
 }
 
 .form{
@@ -40,3 +44,6 @@ button{
     color: white;
 }
 
+.navbar-brand{
+    color: var(--red);
+}

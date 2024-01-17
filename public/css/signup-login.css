@@ -51,6 +51,14 @@ h1 {
     text-shadow: 3px 2px 2px white;
 }
 
+h2 {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+p {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
 .btn{
    background-color: var(--ltgrn); 
    border-color: #679289;
