@@ -9,10 +9,8 @@ router.get('/', async (req, res) => {
         // Gets current user ID for later use
         const creator_id = req.session.user.id;
 
-        res.render('app-cookbook-create', {
-            creator_id: creator_id,
-            logged_in: req.session.logged_in
-        });
+        res.render('app-cookbook-create', {creator_id: creator_id,
+        logged_in: req.session.logged_in});
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
@@ -34,14 +32,14 @@ router.get('/:cookbook_id', async (req, res) => {
                 id: req.params.cookbook_id,
                 creator_id: userId
             },
-            include: {
+            include: [{
                 model: Recipe,
                 include: {
-                    model: User
+                    model: User,
                 }
-            }
-
-            // include: User
+            },
+            'creator'
+        ]
         });
 
         console.log(cookbookData)
