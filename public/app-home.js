@@ -1,64 +1,46 @@
 
   // Function to handle the edit button click
-  async function handleEditButtonClick() {
-    try {
-        // Fetch data from a specific endpoint
-        const response = await fetch(''); // need path to edit page here 
+//   async function handleEditButtonClick() {
+//     try {
+//         // Fetch data from a specific endpoint
+//         const response = await fetch(''); // need path to edit page here 
         
-        // Check if the response is successful
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+//         // Check if the response is successful
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
 
-        // Parse the JSON data from the response
-        const data = await response.json();
+//         // Parse the JSON data from the response
+//         const data = await response.json();
 
-        // Do something with the fetched data
-        console.log('Fetched data:', data);
+//         // Do something with the fetched data
+//         console.log('Fetched data:', data);
 
-        // Add additional logic here based on the fetched data
+//         // Add additional logic here based on the fetched data
 
-        // Toggle the visibility of the dropdown
-        const dropdown = document.querySelector('.dropdown-menu');
-        dropdown.classList.toggle('show');
-    } catch (error) {
-        console.error('Error fetching data:', error.message);
-    }
-}
+//         // Toggle the visibility of the dropdown
+//         const dropdown = document.querySelector('.dropdown-menu');
+//         dropdown.classList.toggle('show');
+//     } catch (error) {
+//         console.error('Error fetching data:', error.message);
+//     }
+// }
 
     // Function for add button click
     function handleAddButtonClick() {
-        // this will url for creating cookbook page
-        const newPageURL = '/app/cookbook'; // path to create cookbook page here
+        //  cookbook page
+        const newPageURL = '/app/cookbook'; 
 
         // Navigate to the new page
         window.location.href = newPageURL;
     }
 
 
-// // Function to handle the dropdown item click
-// function handleDropdownItemClick(item) {
-//     // Example: Navigate to a page based on the clicked item
-//     switch (item) {
-//         case 'Item 1':
-//             window.location.href = '/path/';
-//             break;
-//         case 'Item 2':
-//             window.location.href = '/path/';
-//             break;
-//         // Add more cases as needed
-//         default:
-//             // Handle other cases or perform a default action
-//             break;
-//     }
-// }
-//     console.log(`Dropdown item clicked: ${item}`);
-
 
 // Event listeners
 const editButton = document.querySelector('.edit');
 
-document.querySelector('.edit').addEventListener('click', handleEditButtonClick);
+// document.querySelector('.edit').addEventListener('click', handleEditButtonClick);
 // add tool tip to edit button
 editButton.title = 'Edit';
 
