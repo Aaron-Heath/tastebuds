@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Cookbook, Recipe, User } = require('../../models')
+const withAuth = require('../../utils/auth');
+router.all('*',withAuth);
 
 // The /app/recipe endpoint for getting the form to create a new recipe
 router.get('/', async (req, res) => {
@@ -57,7 +59,7 @@ router.get('/:id', async (req,res) => {
     }
 
     const recipe = recipeData.get({plain: true});
-    res.render("app-recipe", { recipe });
+    res.render("app-recipe", { recipe, logged_in: req.session.logged_in });
 });
 
 // The /app/recipe/update/:id endpoint for looking at specific recipes
