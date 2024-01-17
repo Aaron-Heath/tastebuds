@@ -8,6 +8,7 @@
 }
 
 .title{
+    padding: 0px;
     margin: 10px;
     font-family: 'Chewy', system-ui;
     /* font-family: 'Hind Siliguri', sans-serif; */
@@ -25,8 +26,13 @@ body{
 
 .form-control{
     font-family: 'Red Hat Display', sans-serif;
+    width:100%;
 }
 
+h3{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
+}
 .btn{
     background-color: var(--ltgrn);
     font-family: 'Hind Siliguri', sans-serif;
@@ -38,4 +44,16 @@ body{
 
 .container{
     margin-top: 25%;
+}
+
+.mb-3{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+option{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+form{
+    width:90%;
 }

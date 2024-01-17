@@ -47,3 +47,7 @@ button{
 .navbar-brand{
     color: var(--red);
 }
+
+.form-control{
+    width: 90%;
+}
