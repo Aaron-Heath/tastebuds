@@ -12,6 +12,10 @@
     font-family: 'Chewy', system-ui;
 } */
 
+h5 {
+    display: inline-block;
+}
+
 .offcanvas-title {
     color:#071E22;
     font-family: 'Hind Siliguri', sans-serif;
@@ -109,4 +113,8 @@ li{
     justify-content:space-evenly;
     align-items: center;
     font-family: 'Hind Siliguri', sans-serif;
+}
+
+#settings-card {
+    display:none;
 }
