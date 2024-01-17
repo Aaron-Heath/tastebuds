@@ -42,7 +42,8 @@ router.get('/', async (req, res) => {
 
         res.render('app-recipe-create', { 
             cookbooks:cookbooks,
-            logged_in: req.session.logged_in });
+            logged_in: req.session.logged_in,
+        active: req.session.active });
 
     } catch (err) {
         console.error(err);
@@ -61,7 +62,8 @@ router.get('/:id', async (req,res) => {
 
     const recipe = recipeData.get({plain: true});
     res.render("app-recipe", { recipe,
-        logged_in: req.session.logged_in });
+        logged_in: req.session.logged_in,
+    active: req.session.active });
 });
 
 // The /app/recipe/update/:id endpoint for looking at specific recipes
@@ -73,7 +75,8 @@ router.get('/update/:id', async (req, res) => {
         console.log(recipe)
 
         res.render('app-recipe-update', { recipe: recipe,
-            logged_in: req.session.logged_in });
+            logged_in: req.session.logged_in,
+        active: req.session.active });
 
     } catch (err) {
         console.error(err);

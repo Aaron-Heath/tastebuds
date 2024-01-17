@@ -10,7 +10,8 @@ router.get("/", async (req, res) => {
     const creator_id = req.session.user.id;
 
         res.render('app-cookbook-create', {creator_id: creator_id,
-        logged_in: req.session.logged_in});
+        logged_in: req.session.logged_in,
+    active: req.session.active});
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
@@ -46,7 +47,8 @@ router.get('/:cookbook_id', async (req, res) => {
 
         // Check if the cookbook exists
         if (!cookbookData) {
-            return res.status(404).render('404', { logged_in: req.session.logged_in });
+            return res.status(404).render('404', { logged_in: req.session.logged_in,
+                active: req.session.active });
         }
 
         // Get the cookbook as a plain object
@@ -54,7 +56,8 @@ router.get('/:cookbook_id', async (req, res) => {
         console.log(cookbook);
 
         // Render the page with the cookbook, user ID, and logged-in status
-        res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in });
+        res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in,
+        active: req.session.active });
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ error: 'Failed to retrieve data' });
@@ -92,7 +95,8 @@ router.get('/update/:id', async (req, res) => {
             users,
             userCookbooks, 
             creator_id: creator_id,
-            logged_in: req.session.logged_in  });
+            logged_in: req.session.logged_in,
+        active: req.session.active  });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
