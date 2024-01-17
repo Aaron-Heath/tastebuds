@@ -26,53 +26,6 @@
 //     }
 // }
 
-
-// Function to update the total cookbook count
-async function updateCookbookCount() {
-    try {
-        const cookbookCountResponse = await fetch('/app/cookbook'); 
-
-        if (!cookbookCountResponse.ok) {
-            throw new Error(`HTTP error! Status: ${cookbookCountResponse.status}`);
-        }
-
-        const cookbookCountData = await cookbookCountResponse.json();
-
-        
-        const totalCookbookCountElement = document.querySelector('.total-cookbook-count');
-        totalCookbookCountElement.textContent = cookbookCountData.length; // 
-
-    } catch (error) {
-        console.error('Error fetching cookbook count:', error.message);
-    }
-}
-
-// Function to update the total recipe count
-async function updateRecipeCount() {
-    try {
-        const recipeCountResponse = await fetch('/app/recipe'); 
-
-        if (!recipeCountResponse.ok) {
-            throw new Error(`HTTP error! Status: ${recipeCountResponse.status}`);
-        }
-
-        const recipeCountData = await recipeCountResponse.json();
-
-       
-        const totalRecipeCountElement = document.querySelector('.total-recipe-count');
-        totalRecipeCountElement.textContent = recipeCountData.length; 
-
-    } catch (error) {
-        console.error('Error fetching recipe count:', error.message);
-    }
-}
-
-// Call the updateCounts functions when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    updateCookbookCount();
-    updateRecipeCount();
-});
-
     // Function for add button click
     function handleAddButtonClick() {
         // this will url for creating cookbook page

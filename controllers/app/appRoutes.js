@@ -13,6 +13,13 @@ router.get('/', async (req,res) => {
     const cookbooks = cookbookData.map((cookbook) => 
         cookbook.get({plain: true}));
 
+    const cookbookCount = cookbooks.length;
+    const {recipeCount, recipeRows} = await Recipe.findAndCountAll({
+        where: {
+            creator_id: req.session.user.id
+        }
+    })
+
     const userData = await User.findByPk(req.session.user.id);
 
     const sharedCookbookData = await userData.getCookbooks();
@@ -27,7 +34,9 @@ router.get('/', async (req,res) => {
     res.render('app-home', { 
         cookbooks: cookbooks,
         sharedCookbooks: sharedCookbooks,
-        user: user, 
+        user: user,
+        recipeCount: recipeCount, 
+        cookbookCount: cookbookCount,
         logged_in: req.session.logged_in });
 });
 // router.all('*', withAuth);
