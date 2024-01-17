@@ -3,6 +3,7 @@ const { Cookbook, Recipe, User } = require('../../models')
 const withAuth = require('../../utils/auth');
 router.all('*',withAuth);
 
+
 // The /app/recipe endpoint for getting the form to create a new recipe
 router.get('/', async (req, res) => {
     try {
@@ -81,5 +82,19 @@ router.get('/update/:id', async (req, res) => {
         console.error(err);
         res.status(500).json(err);
     }
-})
+});
+// router.put('/update/:id', async (req, res) => {
+//     try {
+//         const updatedRecipe = await Recipe.update(req.body, {
+//             where: { 
+//                 id: req.params.id,
+//             }
+//         })
+//         if(updatedRecipe) {
+//             res.status(200).end()
+//         }
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 module.exports = router;
