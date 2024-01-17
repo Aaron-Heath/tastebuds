@@ -123,7 +123,7 @@ async function updateRecipe(event) {
     try {
         //Collects body data
         const fetchBody = await getData(form);
-
+        let recipeId = req.params.id
         const response = await fetch(`/app/recipe/${recipeId}`, {
             method: 'PUT',
             headers: {
