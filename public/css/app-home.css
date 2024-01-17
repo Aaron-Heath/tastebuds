@@ -26,10 +26,14 @@ body {
     margin-right: 15%;
 }
 
-.list-group{
+.list-group-item{
     text-align: left;
     font-family: 'Dosis', sans-serif;
+    font-size: 18px;
+}
 
+.list-body-secondary{
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 .placeholder-img{
@@ -78,10 +82,6 @@ body {
     padding: 0px;
 }
 
-li {
-    font-family: 'Dosis', sans-serif;
-    font-size: 12px;
-}
 .nav-item {
     font-family:'Hind Siliguri', sans-serif;
 }
@@ -96,6 +96,7 @@ li{
     font-family: 'Dosis', sans-serif;
     font-size: 17px;
 }
+
 #offcanvasNavbarLabel{
     font-family: 'Hind Siliguri', sans-serif;
 }

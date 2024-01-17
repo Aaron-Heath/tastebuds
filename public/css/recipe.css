@@ -7,31 +7,40 @@
     --linen: #EFE6DD;
 }
 
-body{
+body {
     background-color: var(--linen);
 }
-.container{
+
+.container {
     display: flex;
     justify-content: center;
+    width: 100vw;
 }
 
-.card-title{
+.card-body {
+   
+}
+.app-main {
+    width: 100vw;
+}
+
+.card-title {
     font-family: 'Hind Siliguri', sans-serif;
     text-align: center;
 }
 
-h1{
+h1 {
     font-size: 28px;
     font-family:'Red Hat Display', sans-serif;
     font-weight: bold;
     text-align: center;
     margin-bottom: 0px;
     color: var(--grn);
-    
 }
 
-li{
+li {
     font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
 }
 
 p {
@@ -46,7 +55,8 @@ h3 {
 .card {
     margin: 15px;
 }
-.list-group-item{
+
+.list-group-item {
     font-family: 'Hind Siliguri', sans-serif;
 }
 
@@ -59,9 +69,14 @@ h3 {
 .list-group-item-action {
     width: 100%;
     color: rgba(33,37,41,0.75);
-    text-align: inherit;
+    text-align: center;
 }
 
+#card-body {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
 #ingredients-container img:hover,
 #directions-container img:hover {
     cursor: pointer;
