@@ -30,8 +30,13 @@ label{
 
 }
 
-.btn{
+button{
     font-family: 'Red Hat Display', sans-serif;
     background-color: var(--grn);
+    padding: 7px;
+    border-style: none;
+    border-color: none;
+    border-radius: 10px;
+    color: white;
 }
 
