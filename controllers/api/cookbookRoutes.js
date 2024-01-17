@@ -26,11 +26,18 @@ router.post('/', async (req, res) => {
 
         // Iterates through the array of users and editors, creating the appropriate UserCookbook model
         for (const each of userCookbooksBody) {
-            console.log(each)
+            console.log('Each' + each)
+
+
             // Takes permission key and turns it into a string to fit UserCookbook model
             const permission = String(Object.keys(each));
             // Takes user_id value and turns it into an integer to fit UserCookbook model
             const user_id = parseInt(Object.values(each));
+            console.log(user_id)
+
+            if (isNaN(user_id)) {
+                return;
+            }
 
             const newUserCookbook = await UserCookbook.create({
                 user_id: user_id,
