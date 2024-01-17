@@ -115,6 +115,6 @@ li{
     font-family: 'Hind Siliguri', sans-serif;
 }
 
-#settings-card {
+#settings-card.visible-false {
     display:none;
 }
