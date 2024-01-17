@@ -85,14 +85,14 @@ router.put('/:cookbook_id', async (req, res) => {
             const user_id = parseInt(Object.values(each));
 
             // Checks for preexisting UserCookbook model
-            const existingUserCookbook = await UserCookbook.findOne({
+            const existingUserCookbook = UserCookbook.findOne({
                 where: {
                     user_id: user_id,
                     cookbook_id: req.params.cookbook_id
                 }
-            });
+            })
 
-            // Updates UserCookbook model if exists
+            // // Updates UserCookbook model if exists
             if (existingUserCookbook) {
                 await UserCookbook.update(
                     {
@@ -106,12 +106,12 @@ router.put('/:cookbook_id', async (req, res) => {
                     // Creates new UserCookbook model is no previous existing one
                 )
             } else {
-               await UserCookbook.create({
+                await UserCookbook.create({
                     user_id: user_id,
                     cookbook_id: req.params.cookbook_id,
                     permissions: permission
                 })
-            };
+            }
         }
 
 

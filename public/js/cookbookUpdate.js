@@ -62,7 +62,7 @@ const getData = async () => {
         for (each of editors) {
             userCookbookData.push({ 'editor': each });
         }
-
+        console.log(userCookbookData)
         const fetchBody = {
             title: title,
             isPublic: isPublic,
@@ -70,7 +70,7 @@ const getData = async () => {
             userCookbookData: userCookbookData
         };
 
-        console.log(fetchBody)
+        console.log('Body' + fetchBody)
         return fetchBody;
 
     } catch (err) {
