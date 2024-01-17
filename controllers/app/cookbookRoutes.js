@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Cookbook, User, Recipe } = require('../../models');
+const { Cookbook, User, Recipe, UserCookbook } = require('../../models');
 const withAuth = require('../../utils/auth');
 router.all('*',withAuth);
 
@@ -74,11 +74,25 @@ router.get('/update/:id', async (req, res) => {
         user.get({plain: true}));
         console.log(users)
 
+        const dbUserCookbookData = await UserCookbook.findAll({
+            where:{
+                cookbook_id: req.params.id
+            }
+        });
+        const userCookbooks = await dbUserCookbookData.map((userCookbook) => 
+        userCookbook.get({ plain: true })
+        );
+        console.log(userCookbooks)
+
         // Gets current user ID for later use
         const creator_id = req.session.user.id;
 
-        res.render('app-cookbook-update', { cookbook, users, creator_id: creator_id,
-            logged_in: req.session.logged_in });
+        res.render('app-cookbook-update', { 
+            cookbook, 
+            users,
+            userCookbooks, 
+            creator_id: creator_id,
+            logged_in: req.session.logged_in  });
     } catch (err) {
         console.error(err);
         res.status(500).json(err);
