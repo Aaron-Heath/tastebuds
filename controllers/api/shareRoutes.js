@@ -35,18 +35,22 @@ router.put('/', async (req, res) => {
 
         if(!userData) {
             res.sendStatus(404);
+            return
         }
     } catch (err) {
         res.sendStatus(500);
+        return
     }
 
-    // INSERT OR UPDATE
     const existingUserCookbook = await UserCookbook.findOne({
         where: {
             user_id: userData.id,
             cookbook_id: req.body.cookbook_id
         }
     });
+
+    // INSERT OR UPDATE
+
 
     // UPDATE IF FOUND
     if(existingUserCookbook) {
@@ -68,6 +72,7 @@ router.put('/', async (req, res) => {
             res.json(updatedUserCookbook)
         } catch (err) {
             res.status(500).json(err);
+            return;
         };
     } else {
         // CREATE IF NOT FOUND
@@ -86,6 +91,7 @@ router.put('/', async (req, res) => {
             res.json(newUserCookbook)
         } catch (err) {
             res.status(500).json(err);
+            return;
         };
     };
 
