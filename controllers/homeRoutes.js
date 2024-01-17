@@ -5,12 +5,16 @@ router.get('/', async (req,res) => {
         res.redirect('/app');
     }
 
-    res.render('homepage', { logged_in: req.session.logged_in });
+    res.render('homepage', { 
+        logged_in: req.session.logged_in,
+    active: req.session.active });
 })
 
 router.get('/signup', async (req, res) => {
     
-    res.render('signup', { logged_in: req.session.logged_in });
+    res.render('signup', { 
+        logged_in: req.session.logged_in,
+        active: req.session.active });
 });
 
 router.get('/login', async (req,res) => {
