@@ -34,6 +34,10 @@ a {
     font-family: 'Hind Siliguri', sans-serif;
 }
 
+.dropdown-item{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
 .border-blue {
     border: 2px solid blue;
 }
