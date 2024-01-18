@@ -116,6 +116,7 @@ async function handleEditClick(event) {
             },
             body: JSON.stringify(fetchBody),
         });
+        editChange('lock');
 
         if(response.ok) {
             alert('Update successful!');
