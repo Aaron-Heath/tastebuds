@@ -10,7 +10,7 @@
 body{
     background-image: url(/assets/Images/Untitled\ design.png);
     background-position-x: 100vh;
-    background-size: contain;
+    background-size: cover;
     background-attachment: fixed;
 }
 

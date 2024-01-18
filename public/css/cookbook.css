@@ -8,12 +8,6 @@ body {
     margin-right: 15%;
 }
 
-.card-container{
-    /* display: flex;
-    text-align: center;
-    justify-content: center; */
-}
-
 .card-body{
     padding-top: 5px;
     padding-bottom: 5px;
@@ -23,20 +17,8 @@ body {
     align-items: center;
     font-family: 'Inria Serif', serif;
     font-size: 25px;
-    /* font-weight: bold; */
     color: var(--drkgrn);
-    margin-bottom: 20px;
-  
-}
-
-#card2-title{
-    font-size: 20px;
-    color:#1b4750;
-    text-align: center;
-    width: 80%;
-    justify-content:space-evenly;
-    align-items: center;
-    font-family: 'Hind Siliguri', sans-serif;
+    margin-bottom: 0px;
 }
 
 li{
@@ -93,6 +75,23 @@ h5 {
     position: absolute;
     top:5px;
     left:5px;
+}
+
+#description{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    padding:0px;
+    margin:0px;
+}
+
+#card2-title{
+    font-size: 20px;
+    color:#1b4750;
+    text-align: center;
+    width: 80%;
+    justify-content:space-evenly;
+    align-items: center;
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 #settings-card{
