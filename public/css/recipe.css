@@ -79,13 +79,16 @@ img {
     justify-content: center;
 }
 
-
 #ingredients-container img:hover,
 #directions-container img:hover {
     cursor: pointer;
-
 }
 
 .edit-btn {
     border: none;
+    text-decoration: none;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
