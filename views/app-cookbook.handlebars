@@ -4,7 +4,7 @@
     {{!-- <h3>Cookbook: {{ title }}</h3> --}}
     <div class="card w-75 mb-3">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5> <img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>
+            <h5 class="card-title">{{title}}</h5> {{#if isEditor}}<img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>{{/if}}
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Creator: {{creator.username}} </li>
                 <li class="list-group-item">Recipes: </li>
@@ -14,21 +14,24 @@
             </ul>
         </div>
     </div>
+        {{#if isEditor}}
         <div class="card w-75 mb-3 visible-false" id="settings-card" data-visible="false" data-id="{{id}}">
-        <h5 class="card-title card-body">Settings</h5>
-        <div class="card-body">
-
-            <ul id="settings-update" class="list-group list-group-flush">
-                <li class="list-group-item">Private: <input type="checkbox" {{#unless isPublic}}checked {{/unless}}></li>
-                <li class="list-group-item">Add Editor: <input id="editor" type="text"><button id="add-editor" class="add-btn btn-primary">+</button></li> 
-                <li class="list-group-item">Add Viewer: <input id="viewer" type="text"><button id="add-viewer" class="add-btn btn-primary">+</button></li>
-                <li class="list-group-item"><button class="btn btn-danger" id="delete-cookbook">Delete Cookbook</button></li>
+            <h5 class="card-title card-body">Settings</h5>
+            <div class="card-body">
+                <ul id="settings-update" class="list-group list-group-flush">
+                    {{#if isOwner}}
+                    <li class="list-group-item">Private: <input type="checkbox" {{#unless isPublic}}checked {{/unless}}></li>
+                    {{/if}}
+                    <li class="list-group-item">Add Editor: <input id="editor" type="text"><button id="add-editor" class="add-btn btn-primary">+</button></li> 
+                    <li class="list-group-item">Add Viewer: <input id="viewer" type="text"><button id="add-viewer" class="add-btn btn-primary">+</button></li>
+                    <li class="list-group-item"><button class="btn btn-danger" id="delete-cookbook">Delete Cookbook</button></li>
+            </div>
         </div>
-    </div>
+    {{/if}}
     <div class="card w-75 mb-3">
                 <div class="card-body">
                     <div class="card-container">
-                        <h5 id="card2-title">Recipes </h5>
+                        <h5 id="card2-title">Recipes</h5>
                         <a href="../recipe" class="add-btn btn-primary">+</a>
                     </div>
                     <div class="list-group list-group-flush">

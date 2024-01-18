@@ -90,6 +90,7 @@ router.post('/login', async (req, res) => {
           };
           // req.session.user_id = user.id;
           req.session.logged_in = true;
+          req.session.active = user.validated;
 
           // Send JSON response with success message and user information
           res.json({

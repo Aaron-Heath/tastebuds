@@ -34,14 +34,17 @@ router.get('/', async (req,res) => {
     res.render('app-home', { 
         cookbooks: cookbooks,
         sharedCookbooks: sharedCookbooks,
-        user: user,
         recipeCount: recipeCount, 
         cookbookCount: cookbookCount,
-        logged_in: req.session.logged_in });
+        user: user, 
+        logged_in: req.session.logged_in,
+        active: req.session.active
+     });
 });
 
 router.get('/public', (req, res) => {
-    res.render('app-public', { logged_in: req.session.logged_in });
+    res.render('app-public', { logged_in: req.session.logged_in,
+    active: req.session.active });
 });
 
 
