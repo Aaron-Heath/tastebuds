@@ -11,24 +11,6 @@ body {
     background-color: var(--linen);
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-}
-
-.card-body {
-   
-}
-.app-main {
-    width: 100vw;
-}
-
-.card-title {
-    font-family: 'Hind Siliguri', sans-serif;
-    text-align: center;
-}
-
 h1 {
     font-size: 28px;
     font-family:'Red Hat Display', sans-serif;
@@ -36,6 +18,7 @@ h1 {
     text-align: center;
     margin-bottom: 0px;
     color: var(--grn);
+    margin:0;
 }
 
 li {
@@ -50,6 +33,24 @@ p {
 h3 {
     font-family: 'Hind Siliguri', sans-serif;
     
+}
+
+img { 
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.container {
+   align-items: center;
+    width: 100vw;
+}
+
+.card-title {
+    font-family: 'Hind Siliguri', sans-serif;
+    text-align: center;
 }
 
 .card {
@@ -77,12 +78,17 @@ h3 {
     display: flex;
     justify-content: center;
 }
+
 #ingredients-container img:hover,
 #directions-container img:hover {
     cursor: pointer;
-
 }
 
 .edit-btn {
     border: none;
+    text-decoration: none;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

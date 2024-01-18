@@ -1,0 +1,34 @@
+:root {
+    --drkgrn: #1b4750;
+    --grn: #1d7874;
+    --ltgrn: #679289;
+    --tan: #F4C095;
+    --red: #ff523b;
+    --linen: #EFE6DD;
+}
+
+body{
+    background-image: url(/assets/Images/paperbckgrnd.png);
+    background-size: contain;
+    background-attachment: fixed;
+    background-position-x: 100vh;
+}
+
+h1 {
+    font-family: 'Chewy', system-ui;
+    color: var(--red);
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20%;
+}
+
+.form-control{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.btn{
+    background-color: var(--grn); 
+    border-color: #679289;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px; 
+ }

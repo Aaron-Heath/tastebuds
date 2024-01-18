@@ -7,8 +7,26 @@
     --linen: #EFE6DD;
 }
 
-*{
-    background-color: var(--linen);
+body{
+    /* background-color: var(--linen); */
+    background-image: url(/assets/Images/paperbckgrnd.png);
+    background-size: contain;
+    background-attachment: fixed;
+    background-position-x: 100vh;
+}
+
+button {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: var(--grn);
+    padding: 7px;
+    border-style: none;
+    border-color: none;
+    border-radius: 10px;
+    color: white;
+}
+
+label{
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 .form{
@@ -19,10 +37,6 @@
     width: 100%;
 }
 
-label{
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
 .username{
     font-family: 'Chewy', system-ui;
     text-align: center;
@@ -30,13 +44,10 @@ label{
 
 }
 
-button{
-    font-family: 'Red Hat Display', sans-serif;
-    background-color: var(--grn);
-    padding: 7px;
-    border-style: none;
-    border-color: none;
-    border-radius: 10px;
-    color: white;
+.navbar-brand{
+    color: var(--red);
 }
 
+.form-control{
+    width: 90%;
+}

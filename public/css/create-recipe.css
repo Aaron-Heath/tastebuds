@@ -7,31 +7,56 @@
     --linen: #EFE6DD;
 }
 
-.title{
-    margin: 10px;
-    font-family: 'Chewy', system-ui;
-    /* font-family: 'Hind Siliguri', sans-serif; */
-    color: var(--grn);
-    text-align: center;
+h3{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
 }
 
 body{
-    background-color:var(--linen);
+    /* background-color: var(--linen); */
+    background-image: url(/assets/Images/paperbckgrnd.png);
+    background-size: contain;
+    background-attachment: fixed;
+    background-position-x: 100vh;
+}
+
+option{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+form{
+    width:90%;
 }
 
 .form-control{
     font-family: 'Red Hat Display', sans-serif;
+    width:100%;
 }
 
 .btn{
     background-color: var(--ltgrn);
     font-family: 'Hind Siliguri', sans-serif;
 }
+
 .btn-primary{
     background-color: var(--grn);
     font-family: 'Hind Siliguri', sans-serif;
 }
 
-.container{
-    margin-top: 25%;
+.title{
+    padding: 0px;
+    margin-bottom: 0px;
+    margin: 10px;
+    font-family: 'Chewy', system-ui;
+
+    color: var(--grn);
+    text-align: center;
 }
+.container{
+    margin-top: 10%;
+}
+
+.mb-3{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+

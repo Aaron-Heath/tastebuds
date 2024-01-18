@@ -1,0 +1,111 @@
+body {
+    background-color: var(--linen); 
+}
+
+.card {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.card-body{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.card-title{
+    text-align: center;
+    align-items: center;
+    font-family: 'Inria Serif', serif;
+    font-size: 25px;
+    color: var(--drkgrn);
+    margin-bottom: 0px;
+}
+
+li{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.add-btn{
+   margin-bottom: 0px;
+   background-color: #1d7874;
+   width: 25px;
+   text-align: center;
+   padding: 0px;
+   color: var(--linen);
+   text-decoration: none;
+   border-radius: 30%;
+   position: absolute;
+   top: 5px;
+   right: 5px;
+}
+
+.list-body-secondary{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+h5 {
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+}
+ 
+.mb-1{
+    text-decoration: none;
+    font-family: 'Hind Siliguri', sans-serif;
+    color:black;
+}
+
+.text-body-secondary {
+    float: left;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.edit{
+    border: none;
+    background: none;
+    margin-bottom: 20px;
+    margin-right:0px;
+    margin-top: 0%;
+    align-self: auto;
+    padding: 0px;
+}
+
+.pencil{
+    width: 25px;
+    position: absolute;
+    top:5px;
+    left:5px;
+}
+
+#description{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    padding:0px;
+    margin:0px;
+}
+
+#card2-title{
+    font-size: 20px;
+    color:#1b4750;
+    text-align: center;
+    width: 80%;
+    justify-content:space-evenly;
+    align-items: center;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+#settings-card{
+    box-shadow: 3px 2px 10px gray;
+}
+
+#settings-card.visible-false {
+    display:none;
+}
+
+#settings-btn{ 
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
