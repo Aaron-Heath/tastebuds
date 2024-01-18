@@ -67,12 +67,20 @@ router.get('/:cookbook_id', async (req, res) => {
             });
         } 
 
+        const isOwner = PERMISSIONS === 'owner';
+        const isEditor = (PERMISSIONS === 'editor' || isOwner); 
+
         // Get the cookbook as a plain object
         const cookbook = cookbookData.get({ plain: true });
         console.log(cookbook);
 
         // Render the page with the cookbook, user ID, and logged-in status
-        res.render('app-cookbook', { ...cookbook, user_id: userId, logged_in: req.session.logged_in,
+        res.render('app-cookbook', { 
+            ...cookbook, 
+            user_id: userId,
+            logged_in: req.session.logged_in,
+            isEditor: isEditor,
+            isOwner: isOwner,
         active: req.session.active });
     } catch (error) {
         console.error('Error:', error.message);

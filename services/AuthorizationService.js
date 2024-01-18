@@ -69,11 +69,11 @@ class AuthorizationService {
         const cookbook = await CookbookRecipe.findOne({
                 where: {
                 recipe_id: recipe.id
-            }  
+            }
         });
 
 
-    if(await this.getCookbookPermissions(userId, cookbook, true)) {
+    if(await this.getCookbookPermissions(userId, cookbook, true) != null) {
         return 'viewer';
     }
 

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Cookbook, Recipe, User } = require('../../models')
+const { Cookbook, Recipe, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 router.all('*',withAuth);
 
@@ -83,18 +83,4 @@ router.get('/update/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
-// router.put('/update/:id', async (req, res) => {
-//     try {
-//         const updatedRecipe = await Recipe.update(req.body, {
-//             where: { 
-//                 id: req.params.id,
-//             }
-//         })
-//         if(updatedRecipe) {
-//             res.status(200).end()
-//         }
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 module.exports = router;
