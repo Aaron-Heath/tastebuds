@@ -7,13 +7,9 @@
     --linen: #EFE6DD;
 }
 
-.title{
-    padding: 0px;
-    margin: 10px;
-    font-family: 'Chewy', system-ui;
-    /* font-family: 'Hind Siliguri', sans-serif; */
-    color: var(--grn);
-    text-align: center;
+h3{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 18px;
 }
 
 body{
@@ -24,32 +20,6 @@ body{
     background-position-x: 100vh;
 }
 
-.form-control{
-    font-family: 'Red Hat Display', sans-serif;
-    width:100%;
-}
-
-h3{
-    font-family: 'Hind Siliguri', sans-serif;
-    font-size: 18px;
-}
-.btn{
-    background-color: var(--ltgrn);
-    font-family: 'Hind Siliguri', sans-serif;
-}
-.btn-primary{
-    background-color: var(--grn);
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
-.container{
-    margin-top: 25%;
-}
-
-.mb-3{
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
 option{
     font-family: 'Hind Siliguri', sans-serif;
 }
@@ -57,3 +27,36 @@ option{
 form{
     width:90%;
 }
+
+.form-control{
+    font-family: 'Red Hat Display', sans-serif;
+    width:100%;
+}
+
+.btn{
+    background-color: var(--ltgrn);
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.btn-primary{
+    background-color: var(--grn);
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.title{
+    padding: 0px;
+    margin-bottom: 0px;
+    margin: 10px;
+    font-family: 'Chewy', system-ui;
+
+    color: var(--grn);
+    text-align: center;
+}
+.container{
+    margin-top: 10%;
+}
+
+.mb-3{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+

@@ -9,9 +9,9 @@ body {
 }
 
 .card-container{
-    display: flex;
+    /* display: flex;
     text-align: center;
-    justify-content: center;
+    justify-content: center; */
 }
 
 .card-body{
@@ -20,13 +20,13 @@ body {
 }
 .card-title{
     text-align: center;
-    justify-content:center;
-    /* align-items: center; */
+    align-items: center;
     font-family: 'Inria Serif', serif;
     font-size: 25px;
     /* font-weight: bold; */
     color: var(--drkgrn);
     margin-bottom: 20px;
+  
 }
 
 #card2-title{
@@ -42,21 +42,19 @@ body {
 li{
     font-family: 'Hind Siliguri', sans-serif;
 }
+
 .add-btn{
-   /* margin-bottom: 15px; */
+   margin-bottom: 0px;
    background-color: #1d7874;
    width: 25px;
-   height: 25px;
-   font-size: 19px;
    text-align: center;
    padding: 0px;
    color: var(--linen);
    text-decoration: none;
    border-radius: 30%;
-   /* float: right; */
    position: absolute;
-   top: 0;
-   right: 0;
+   top: 5px;
+   right: 5px;
 }
 
 .list-body-secondary{
@@ -69,12 +67,32 @@ h5 {
     font-size: 20px;
 }
  
-img { 
+.mb-1{
+    text-decoration: none;
+    font-family: 'Hind Siliguri', sans-serif;
+    color:black;
+}
+
+.text-body-secondary {
+    float: left;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.edit{
+    border: none;
+    background: none;
+    margin-bottom: 20px;
+    margin-right:0px;
+    margin-top: 0%;
+    align-self: auto;
+    padding: 0px;
+}
+
+.pencil{
     width: 25px;
-    height: 25px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top:5px;
+    left:5px;
 }
 
 #settings-card{
@@ -85,12 +103,10 @@ img {
     display:none;
 }
 
-.mb-1{
-    text-decoration: none;
-    font-family: 'Hind Siliguri', sans-serif;
-    color:black;
-}
-.text-body-secondary {
-    float: left;
-    font-family: 'Hind Siliguri', sans-serif;
+#settings-btn{ 
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

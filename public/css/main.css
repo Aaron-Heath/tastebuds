@@ -13,6 +13,9 @@
     --linen: #EFE6DD;
 }
 
+a {
+    text-decoration: none;
+}
 .navbar-brand {
     color: #ff523b;
     font-family: 'Chewy', system-ui;
@@ -20,16 +23,14 @@
     text-shadow: 2px 2px 2px white;
 }
 
-body {
-    /* background-color: var(--linen); */
-}
-a {
-    text-decoration: none;
+.alert{
+    font-family: 'Hind Siliguri', sans-serif;
 }
 
 .navbar{
     background-color: #aecdc9;
 }
+
 .nav-link{
     font-family: 'Hind Siliguri', sans-serif;
 }

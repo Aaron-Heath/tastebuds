@@ -4,7 +4,8 @@
     {{!-- <h3>Cookbook: {{ title }}</h3> --}}
     <div class="card w-75 mb-3">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5> {{#if isEditor}}<img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>{{/if}}
+            <button type="button" class="edit"><img class="pencil" src="/assets/Images/pencil.png"></button>
+            <h5 contenteditable="true" class="card-title">{{title}}</h5> {{#if isEditor}}<img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>{{/if}}
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Creator: {{creator.username}} </li>
                 <li class="list-group-item">Recipes: </li>

@@ -6,11 +6,39 @@
     --red: #EE2E31;
     --linen: #EFE6DD;
 }
+
 body {
-     /* display:flex; */
     background-image: url(/assets/Images/landingpage.png);
     background-size: cover;
     background-attachment: fixed;
+}
+
+h2{
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    color: #F4C095;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+h1{
+    font-family: 'Chewy', system-ui;
+    text-align: center;
+    color: #F4C095;
+    font-size: 55px;
+    text-shadow: 3px 3px 3px var(--drkgrn);
+
+}
+
+h3{
+    font-family: 'Hind Siliguri', sans-serif;
+    color: #F4C095;
+    text-align: center;
+    margin: 0px;
+    font-weight:bold;
+    font-size:18px;
 }
 
 .card {
@@ -45,33 +73,7 @@ body {
     margin: 0%;
 }
 
-h2{
-    font-family: 'Hind Siliguri', sans-serif;
-    font-size: 20px;
-    text-align: center;
-    color: #F4C095;
-    padding: 0;
-    margin: 0;
-    font-weight: bold;
-}
 
-h1{
-    font-family: 'Chewy', system-ui;
-    text-align: center;
-    color: #F4C095;
-    font-size: 55px;
-    text-shadow: 3px 3px 3px var(--drkgrn);
-
-}
-
-h3{
-    font-family: 'Hind Siliguri', sans-serif;
-    color: #F4C095;
-    text-align: center;
-    margin: 0px;
-    font-weight:bold;
-    font-size:18px;
-}
 
 .card-text{
     font-family: 'Hind Siliguri', sans-serif;
@@ -80,7 +82,3 @@ h3{
     margin-top: 15px;
 
 }
-
-/* .btn:hover{
-    
-} */

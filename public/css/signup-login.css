@@ -14,6 +14,22 @@ body{
     background-attachment: fixed;
 }
 
+h1 {
+    text-align: center;
+    font-size: 35px;
+    font-family: 'Chewy', system-ui;
+    color: var(--red);
+    text-shadow: 3px 2px 2px white;
+}
+
+h2 {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+p {
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
 form, #activation-prompt {
     min-height: 50vh;
     min-width: 80%;
@@ -43,22 +59,6 @@ form, #activation-prompt {
     text-align: center;
 }
 
-h1 {
-    text-align: center;
-    font-size: 35px;
-    font-family: 'Chewy', system-ui;
-    color: var(--red);
-    text-shadow: 3px 2px 2px white;
-}
-
-h2 {
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
-p {
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
 .btn{
    background-color: var(--ltgrn); 
    border-color: #679289;
@@ -68,11 +68,4 @@ p {
 
 .form-control{
     font-family: 'Red Hat Display', sans-serif;
-}
-#activation-prompt {
-    /* border: 2px blue solid; */
-}
-
-#activation-prompt h2 {
-    /* text-align: center; */
 }

@@ -15,6 +15,20 @@ body{
     background-position-x: 100vh;
 }
 
+button {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: var(--grn);
+    padding: 7px;
+    border-style: none;
+    border-color: none;
+    border-radius: 10px;
+    color: white;
+}
+
+label{
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
 .form{
     width: 90%;
 }
@@ -23,25 +37,11 @@ body{
     width: 100%;
 }
 
-label{
-    font-family: 'Hind Siliguri', sans-serif;
-}
-
 .username{
     font-family: 'Chewy', system-ui;
     text-align: center;
     color: var(--grn);
 
-}
-
-button{
-    font-family: 'Red Hat Display', sans-serif;
-    background-color: var(--grn);
-    padding: 7px;
-    border-style: none;
-    border-color: none;
-    border-radius: 10px;
-    color: white;
 }
 
 .navbar-brand{

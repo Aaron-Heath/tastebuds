@@ -10,7 +10,7 @@
         <div class="card-body">
             <h1>{{ recipe.title }} <a href="/app/recipe/update/{{recipe.id}}">
                     <button type="button" class="edit-btn"><img width="30" height="30"
-                            src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1" />
+                            src="/assets/Images/pencil.png" alt="settings--v1" />
                     </button>
                 </a>
             </h1>
@@ -24,11 +24,6 @@
                 {{#each recipe.ingredients as |ingredient|}}
                 <li class="list-group-item">{{ingredient}}</li>
                 {{/each}}
-                {{!-- <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A fourth item</li>
-                <li class="list-group-item">And a fifth one</li> --}}
             </ul>
         </div>
     </div>
@@ -51,25 +46,6 @@
                         <h3>Step {{direction.step}}</h3>
                         <p>{{direction.direction}}</p>
                         {{/each}}
-                        {{!-- <h4 id="list-item-2">Step 2</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <h4 id="list-item-3">Step 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <h4 id="list-item-4">Step 4</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        --}}
                     </div>
                 </div>
 

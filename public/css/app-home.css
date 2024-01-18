@@ -63,28 +63,18 @@ body {
    color: var(--linen);
    text-decoration: none;
    border-radius: 30%;
+   position: absolute;
+   top:5px;
+   right:5px;
 }
 
-.pencil{
-    width:25px;
-    margin: auto;
-    align-self: auto;
-}
 
 img { 
     float:right;
 }
 
 
-.edit{
-    border: none;
-    background: none;
-    margin-bottom: 20px;
-    margin-right:0px;
-    margin-top: 0%;
-    align-self: auto;
-    padding: 0px;
-}
+
 
 .nav-item {
     font-family:'Hind Siliguri', sans-serif;
