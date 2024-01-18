@@ -4,9 +4,12 @@
     {{!-- <h3>Cookbook: {{ title }}</h3> --}}
     <div class="card w-75 mb-3">
         <div class="card-body">
-            <button type="button" class="edit"><img class="pencil" src="/assets/Images/pencil.png"></button>
-            <h5 contenteditable="true" class="card-title">{{title}}</h5> {{#if isEditor}}<img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>{{/if}}
+            <div class="d-flex justify-content-between">
+                <button type="button" class="edit"><img id="edit" data-edit="false" class="pencil" src="/assets/Images/pencil.png"></button>
+                <h5 class="card-title editable" contenteditable="false" id="title">{{title}}</h5> {{#if isEditor}}<img id="settings-btn" width="30" height="30" src="https://img.icons8.com/ios/50/000000/settings--v1.png" alt="settings--v1"/>{{/if}}
+            </div>
             <ul class="list-group list-group-flush">
+                <li class="list-group-item"><small class="editable" contenteditable="false" id="description">{{description}}</small></li>
                 <li class="list-group-item">Creator: {{creator.username}} </li>
                 <li class="list-group-item">Recipes: </li>
                 {{!-- <li class="list-group-item">Shared Users: </li> --}}
