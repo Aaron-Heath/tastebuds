@@ -15,7 +15,7 @@ Upon registration, users will be directed to the homepage. They are provided a d
 
 
 ## Credits
-
+* [Aaron-Heath](https://github.com/Aaron-Heath)
 * [AnthonyRqqq](https://github.com/AnthonyRqqq)
 * [BarkleyRhoat](https://github.com/BarkleyRhoat)
 * [bcolo24](https://github.com/bcolo24)
