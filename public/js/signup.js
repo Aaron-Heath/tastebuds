@@ -30,18 +30,17 @@ async function submitForm(event) {
             body: JSON.stringify(fetchBody)
         });
 
-        if (!response.ok) {
+        if (response.status !== 200 || !response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
     } catch (error) {
         console.error('Error:', error);
+        alert("Something went wrong, please try again!");
+        return;
     }
         console.log("Request complete");
 
-        // Handles the response data
-
-        //clear innerHtml on form-container
         formContainer.innerHTML = "";
 
         // create new html elements telling user to check their email and activate their account
@@ -64,8 +63,8 @@ async function submitForm(event) {
         // Render to screen
         formContainer.appendChild(activationPrompt);
        
-        // set interval to redirect to login page after 20 seconds if user doesnt click button to redirect
-        setTimeout(redirect, 20000);
+        // set interval to redirect to login page after 15 seconds if user doesnt click button to redirect
+        setTimeout(redirect, 15000);
 
 
      

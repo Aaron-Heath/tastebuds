@@ -29,8 +29,7 @@ class MailService {
         } else {
             process.env.PORT ? this.#applicationUrl = "localhost:" + process.env.PORT : this.#applicationUrl = "localhost:3001"
         }
-    }
-    
+    }   
 
     /**
      * Sends a verification email to the newly registered user. Provides a link that will verify and activate their account.
@@ -56,4 +55,4 @@ class MailService {
 
 }
 
-module.exports = MailService;
+module.exports = new MailService();
