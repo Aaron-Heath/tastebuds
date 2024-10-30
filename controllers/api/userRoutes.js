@@ -1,10 +1,11 @@
 const router = require("express").Router();
+const sequelize = require("sequelize");
 const { User, Cookbook } = require("../../models");
 const MailService = require("../../services/MailService");
+const UserService = require("../../services/UserService");
+const CookbookService = require("../../services/CookbookService");
+
 const { uuid } = require('uuidv4');
-
-
-const mailService = new MailService();
 
 router.get('/activate', async (req,res) => {
 
@@ -22,40 +23,26 @@ router.get('/activate', async (req,res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  console.log("Post request heard");
-  try {
-    // Create user in db
-    console.log("Creating user");
-    const userData = await User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
-      uuid: uuid(),
-    }
-      
-    );
 
-    // Create default private cookbook
-    console.log("Creating cookbook");
-    const cookBookData = await Cookbook.create({
-      creator_id: userData.id,
-      title: "My Cookbook",
-      isPublic: false,
-      description: "This is my default cookbook!",
-      viewers: null,
-      editors: null,
-      recipes: null,
-    });
+  const userResult = await UserService.createUser({...req.body});
 
-    // Send verification email to user
-    await mailService.sendVerificationEmail(userData);
-
-    res.status(200).json({message:"user created!"});
-  } catch (err) {
-    res.status(400).json(err);
+  if(!userResult.success) {
+    res.status(409).json(userResult.message);
+    return;
   }
+
+  const cookbookResult = await CookbookService.createDefaultCookbook(userResult.data);
+
+  if(!cookbookResult.success) {
+    res.status(500).json({message:"User creation successful. Default cookbook failed."})
+    return;
+  }
+
+  // send verification email
+  MailService.sendVerificationEmail(userResult.data);
+
+  res.status(200).json({message: userResult.message});
+
 });
 
 router.post('/login', async (req, res) => {
