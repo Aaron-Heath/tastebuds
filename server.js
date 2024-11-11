@@ -17,10 +17,12 @@ const hbs = exphbs.create({
   }
 });
 
+const DAY_EPOCH_MILLI = 3600000 * 24;
+
 const sess = {
     secret: process.env.SESSION_SALT,
     cookie: {
-      maxAge: 600000,
+      maxAge: DAY_EPOCH_MILLI * 7,
       httpOnly: true,
       secure: false,
       sameSite: 'strict',
